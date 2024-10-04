@@ -1,0 +1,35 @@
+= Control plane
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Kloudfuse overview::
+---
+
+Metrics::
+---
+
+Events::
+---
+
+Logs::
+---
+
+Traces::
+---
+
+System::
+---
+
+Outliers::
+---
+
+Pinot::
+---
+
+Kafka::
+---

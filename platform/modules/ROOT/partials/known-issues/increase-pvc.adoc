@@ -1,0 +1,15 @@
+// id=increase-pvc
+
+In some scenarios, you have to increase the size of PVC.
+
+For Azure, see xref:#resize-pvc-azure[].
+
+Resolution::
+Run the `https://raw.githubusercontent.com/kloudfuse/customer/main/scripts/resize_pvc.sh[resize_pvc.sh^]` script.
++
+For example, to increase the size of Kafka stateful PVCs to 100GB in Kfuse namespace, run the script:
++
+[,console]
+----
+sh resize_pvc.sh kafka 100Gi kfuse
+----

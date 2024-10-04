@@ -1,0 +1,18 @@
+= Advanced Capabilities
+:description: Kloudfuse offers many advanced processing capabilities for telemetry streams, AI, facet analytics, real user monitoring, and so on.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+image::../images/advanced.svg[]
+
+* xref:metrics-roll-up.adoc[Roll Up Metrics]
+* xref:archive-hydration.adoc[Logs Archive and Hydration]
+* xref:rum.adoc[Real User Monitoring (RUM)]
+* xref:ai-capabilities.adoc[AI Capabilities]
+* xref:facet-analytics.adoc[Facet Analytics]
+* xref:logs-fingerprinting.adoc[Logs Fingerprinting]
+* xref:service-catalog.adoc[Service Catalog]

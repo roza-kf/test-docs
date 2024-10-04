@@ -1,0 +1,10 @@
+== OpenTelemetry Collector Integration on Kubernetes Environment
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/1015578646/OpenTelemetry+Collector+Integration+on+Kubernetes+Environment

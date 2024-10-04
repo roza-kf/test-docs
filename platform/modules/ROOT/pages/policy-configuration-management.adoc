@@ -1,0 +1,76 @@
+= Manage Policy Configuration
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Policy configuration in Kloudfuse consists of assigning existing policies to user groups, or removing this assignment.
+
+If a user belongs to more than one group, Kloudfuse combines the filters as a union, or a logical OR operator.
+
+For example, 
+
+Group A has a policy that allows its members to see data in Namespace A.
+
+Group B has a policy that allows its members to see data in Namespace B. 
+
+User belongs both to Group A and Group B. They can therefore see data in both namespaces. 
+
+This section discusses topics related to managing policy configurations in Kloudfuse. 
+
+This section describes how to add or delete a policy configuration.
+
+Open image-20240822-233845.png
+image-20240822-233845.png
+Add a New Policy Configuration
+To add a new policy configuration, follow these steps:
+
+In that Admin tab, select Policy Config Management.
+
+The Policy Config Management interface appears.
+
+
+Open image-20240822-235801.png
+image-20240822-235801.png
+Policy Config Management interface
+ 
+
+Click the Add New Policy Config button.
+
+The interface for creating a new policy configuration appears.
+
+Open image-20240822-234100.png
+image-20240822-234100.png
+New policy fields
+Select an existing Policy and a Group where you plan to apply it.
+Here, we choose to apply the policy rbac_service_only to the group test group.
+
+Open image-20240822-234409.png
+image-20240822-234409.png
+Adding a new policy configuration
+Click Save.
+
+You should see a notification that Kloudfuse added the new policy configuration successfully.
+
+The new policy configuration now appears in the interface.
+
+Open image-20240822-234822.png
+image-20240822-234822.png
+New policy configuration added to the list
+Delete a Policy Configuration
+To delete a policy configuration, follow these steps:
+
+Hover over the Group Name filed.
+
+When the Delete (trashcan) icon appears, click it.
+
+
+Open image-20240823-164901.png
+image-20240823-164901.png
+Deleting a policy configuration
+Kloudfuse prompts you to confirm deleting the policy configuration.
+You can click Delete to confirm, or Cancel to stop deleting the policy configuration.
+

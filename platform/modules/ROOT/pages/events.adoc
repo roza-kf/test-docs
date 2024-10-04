@@ -1,0 +1,10 @@
+= Events
+:description: Events
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, events
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+include::partial$events.adoc[]

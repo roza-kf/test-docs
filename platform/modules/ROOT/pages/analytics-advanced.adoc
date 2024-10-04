@@ -1,0 +1,13 @@
+= Advanced Analytics and Monitoring
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/756056089/Analytics+Advance+functions
+
+Prerequisite::
+See xref:analytics-advanced-monitoring-configure.adoc[Configure Advance Monitoring and Analytics]

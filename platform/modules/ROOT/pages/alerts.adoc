@@ -1,0 +1,29 @@
+= Alerts
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+
+// link:/wiki/spaces/EX/overview?homepageId=754188293[External]
+
+Monitoring all of your infrastructures in one place would be incomplete without the ability to know when critical changes occur. The Kloudfuse platform enables you to create alerts that can actively check for configured invariants in data coming from metrics, logs, and traces.
+
+The Kloudfuse platform has taken a flexible, yet simple and powerful approach to alerting. We keep in mind a diverse profile of users: users who are new to any alerting platform, users who have experience with vendor platforms, and users who are comfortable using Grafana alerting. Kloudfuse has the following options for alerting:
+
+- xref:importing-dashboards-alerts.adoc[Importing dashboards and alerts from vendor platforms] to open telemetry-compatible (PromQL) platforms (such as Kloudfuse)
+- xref:grafana-alerts.adoc[Grafana alerting] is embedded within Kloudfuse UI for users who want to use
+Grafana alerting with a Prometheus-compatible data source for metrics &
+logs.
+- xref:platform-alerts.adoc[Kloudfuse-managed
+alerting]  for everyone.
+- Kloudfuse platform comes bundled with xref:preinstalled-alerts.adoc[Preinstalled infrastructure
+alerts].
+
+
+
+
+

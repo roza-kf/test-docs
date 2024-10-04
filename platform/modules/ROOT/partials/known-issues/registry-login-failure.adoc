@@ -1,0 +1,11 @@
+// /registry-login-failre
+
+The helm registry login command may fail.
+
+Resolution::
+Replace *helm registry login* with *docker login*:
+
+[,console]
+----
+cat token.json | docker login -u _json_key --password-stdin https://us-east1-docker.pkg.dev
+----

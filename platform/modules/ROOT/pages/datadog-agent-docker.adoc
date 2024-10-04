@@ -1,0 +1,10 @@
+= Datadog Agent Installation using Docker-Compose
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/857931777/Datadog+Agent+Installation+using+Docker-Compose

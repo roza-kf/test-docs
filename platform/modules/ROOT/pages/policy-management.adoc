@@ -1,0 +1,135 @@
+= Manage Policies
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Policies are filters that determine the access that users and group have to various assets and artifacts of their organization.
+
+Policies must have unique names.
+
+When a user has multiple policies due to membership in multiple groups, these policy filters apply as a union (in other words, it uses the OR logical operator).
+
+2.7.3.png
+  Users who don’t have an explicitly assigned policy get the default access, specified in Default Policy.
+
+To manage policies, follow these steps:
+
+Click the Admin tab.
+
+Select Policy Management.
+
+The Policy Management interface appears.
+It has the following components:
+
+Search bar to locate specific policies
+
+List of policies, including the Policy Name, Type, and Scope.
+
+Open image-20240822-235503.png
+image-20240822-235503.png
+Policy Management
+Proceed to make changes, as described in Change a Policy, Add a New Policy,  and Delete a Policy.
+
+[id=policy-change]
+# Change a Policy
+To change an existing policy, follow these steps:
+
+Hover Hover your pointer over the Scope field of the policy you plan to change.
+
+When the Edit (pencil) icon appears, click on it.
+
+Open image-20240823-010203.png
+image-20240823-010203.png
+Changing a policy
+   
+
+The Edit Policy interface appears.
+You can change the Name of the policy, its Type, and its Key (the Operator / Value) tuple. 
+You can build the key using logical operators, or regex expressions.
+You can also delete the existing key, and add another key as a filter.
+Here, we are changing the namespace_only policy by swapping the operator = (equal) to =~ (regex similar to).
+
+
+Open image-20240823-005539.png
+image-20240823-005539.png
+Click Save Policy.
+
+Kloudfuse confirms that you successfully changed the policy.
+
+Note the changes in the policy as it appears on the Policy Management interface.
+
+Open image-20240823-010641.png
+image-20240823-010641.png
+Changes to the policy
+Add a New Policy
+To add a new policy, follow these steps:
+
+In that Admin tab, select Policy Management.
+
+The Policy Management interface appears.
+It has the following components:
+
+Search bar to locate specific policies
+
+List of policies, including the Policy Name, Type, and Scope.
+
+Click the Add New Policy button.
+
+The Add Policy interface appears.
+
+Open image-20240823-001103.png
+image-20240823-001103.png
+ 
+
+In the interface, specify these fields:
+
+Name
+Choose a meaningful and descriptive name for your new policy
+
+Type
+The options are Custom (default), All, or None.
+You can build custom policies using the Key/Operator/Value specification.
+
+Here, we specify a custom policy test1 with Key kube_namespace, Operator = (equals), and Value octel.
+
+
+Open image-20240823-011116.png
+image-20240823-011116.png
+Adding a Policy
+ 
+
+[Optional] You can use multiple filters to define your custom policies. Click the Add Filter button and proceed.
+
+After you finish defining your new policy, click Save Policy.
+
+Kloudfuse confirms that you successfully created a new policy. 
+
+Note that the new policy appears on the Policy Management interface.
+
+Open image-20240823-011912.png
+image-20240823-011912.png
+New policy in list of policies
+Delete a Policy
+To delete an existing policy from your RBAC configuration, follow these steps:
+
+Hover your pointer over the Scope field of the policy you plan to delete from the system.
+
+When the Delete (trashcan) icon appears, click it.
+
+Open image-20240823-162620.png
+image-20240823-162620.png
+Deleting a policy
+Kloudfuse prompts you to confirm deleting the policy.
+You can click Delete to confirm, or Cancel to stop deleting the policy.
+
+
+Open image-20240823-162844.png
+image-20240823-162844.png
+Confirm or cancel deleting the policy
+You should see a notification that Kloudfuse deleted the policy successfully.
+
+The Group Management interface no longer lists the policy test1. 

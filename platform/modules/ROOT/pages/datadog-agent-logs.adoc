@@ -1,0 +1,8 @@
+= Datadog Agent Logs
+:description: Collect Logs data
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, Datadog, logs
+:figure-caption!:
+:table-caption!:
+:example-caption!:

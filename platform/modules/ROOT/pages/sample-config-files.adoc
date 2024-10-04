@@ -1,0 +1,14 @@
+= Sample configuration files
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Here are the sample configuration files we use in Kloudfuse:
+
+- custom-values.yaml
+- deployment.yaml
+

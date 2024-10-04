@@ -1,0 +1,14 @@
+= Metrics Explorer
+:description: Metrics Explorer facilitates ad-hoc analysis of any metric, simply by charting the time series data for the specified time and dimension.
+:sectanchors:
+:url-repo:
+:page-tags: Kloudfuse, observability, metrics, Metrics Explorer
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+The Metrics Explorer enables you to perform __ad-hoc__ analysis of any metric by charting the time series data for a selected range of time and dimension.
+
+Navigate to the Metrics Explorer by clicking the *Metrics* tab, and selecting *Explorer*:
+
+image::../images/metrics-explorer-go.svg

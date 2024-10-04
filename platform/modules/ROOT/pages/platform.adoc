@@ -1,0 +1,45 @@
+= Kloudfuse Platform
+:description: Overview and Architecture of the Kloudfuse observability platform
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, observability platform, unified observability, observability architecture
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+The Kloudfuse Platform is the industry’s only platform built for deep troubleshooting. The Kloudfuse platform does this by supporting the consumption of all types of telemetry streams (Metrics, Logs, Events, Traces, Alerts, and Topology), into one highly scalable, high-efficiency, and high-performance unified datastore purpose-built for observability and troubleshooting. A single platform can alleviate the need for having disparate solutions for each of the telemetry streams and therefore make the operations a breeze. Kloudfuse’s architecture is unique. The Kloudfuse platform’s data plane runs within your cloud account. The data plane is optionally managed by a control plane which is a managed service by Kloudfuse. The control plane designed to monitor the health and manage the life cycle of the data plane.
+
+.Kloudfuse offers agnostic support
+image:platform-complete.svg[Any input, any output]
+
+[id=advantages]
+# Advantages
+
+Unified data::
+Unified data lake for all observability streams (metrics, events, logs, traces, etc.) make operations a breeze in comparison to disparate open source observability tools. 
+
+Reduced cost::
+Provides reduced cost and greater security, because it is deployed within a customer's environment (VPC). 
+
+Open standards::
+Uses open standard for ingestion and querying. So never get locked in to a vendor.
+
+Multiple fFrmat support::
+Supports ingest of various formats for different streams (Prometheus, FileBeat, OpenTelemetry, DataDog) from many sources (Cloud, common framework, Kubernetes with more integrations added frequently), and can support a variety of scenarios of existing and new collectors. 
+
+Multiple query language support::
+Supports multiple query interfaces (PromQL, LogQL, GraphQL, SQL)
+
+Easy onboarding::
+Provides an onboarding suite to help migrate dashboards and alerts from vendor-specific formats (DataDog/Wavefront, etc.) to the KloudFuse platform. 
+
+Operational ease::
+Operational ease like SaaS platforms with deployment model and functions like open source.
+
+[id=architecture]
+# Architecture
+
+Here’s a high-level architecture of the Kloudfuse platform data plane within a single data center.
+
+.Kloudfuse platform architecture
+image::architecture-top.svg[Kloudfuse platform architecture]

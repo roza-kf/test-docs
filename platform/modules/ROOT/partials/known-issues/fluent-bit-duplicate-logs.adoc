@@ -1,0 +1,40 @@
+// id=fluent-bit-duplicate-logs
+
+When using the Fluent-Bit agent,  Kloudfuse stack may show duplicate logs with the same timestamp and log event. However, if you check the application logs, either on the host or in the container, there is no evidence of duplication. 
+
+Examine Fluent-Bit logs and search for the following known Fluent-Bit (https://github.com/fluent/fluent-bit/issues/7166[Issue #7166^] and https://github.com/fluent/fluent-bit/issues/6886[Issue #6886^]:
+
+[,log]
+----
+[error] [in_tail] file=<path_to_filename> requires a larger buffer size, lines are too long. Skipping file
+----
+
+This occurs because of the default buffer size on the `tail` plugin. 
+
+Resolution::
+. To help diagnose this issue, add a randomly-generated number or string as part of the Fluent-Bit record. This appears as a log facet in the Kloudfuse stack. If the duplicate log lines have different numbers or strings, this confirms that the duplication occured in the Fluent-Bit agent. 
++ 
+To add a randomly-generated number or string, add this filter to your Fluent-Bit configuration:
++
+[,yaml]
+----
+[FILTER]
+   Name lua
+   Match *
+   Call append_rand_number
+   Code function append_rand_number(tag, timestamp, record) math.randomseed(os.clock()*100000000000); new_record = record; new_record["rand_id"] = tostring(math.random(1, 1000000000)); return 1, timestamp, new_record end
+----
+
+. Increase the buffer size by adding `Buffer_Chunk_Size` and `Buffer_Max_Size` to the configuration of *_each_* `tail` plugin.
++
+[,yaml]
+----
+[INPUT]
+    Name              tail
+    Path              <file_path_to_tail>
+    Tag               <tag>
+    Buffer_Chunk_Size 1M
+    Buffer_Max_Size   8M
+----
+
+

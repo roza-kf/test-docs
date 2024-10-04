@@ -1,0 +1,10 @@
+= Integrating Kloudfuse ingester with fluent-bit
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/877920345/Integrating+Kloudfuse+ingester+with+fluent-bit

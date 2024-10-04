@@ -1,0 +1,16 @@
+// id=datadog-access-denied
+
+A non-admin (SSO) user may get one of these permission errors when creating an alert or a contact point:
+
+[,console]
+----
+{"accessErrorId":"ACE0947587429","message":"You'll need additional permissions to perform this action. Permissions needed: any of alert.notifications:write","title":"Access denied"}
+
+{"accessErrorId":"ACE3104889351","message":"You'll need additional permissions to perform this action. Permissions needed: any of alert.provisioning:read, alert.provisioning.secrets:read","title":"Access denied"}
+----
+
+This is because the user may not have the permissions to create contact points or alerts manually. 
+
+Resolution::
+. Log in as an admin user.
+. Create a contact point or an alert.

@@ -1,0 +1,37 @@
+// id=deepstore-access
+
+* Pinot-related jobs are stuck in a crash loop back-off. For example, `kfuse-set-tag-hook`, `pinot-metrics-table-creation`, and similar errors.
+
+* Pinot controller logs a Deepstore access-related exception.
++
+On AWS S3, the exception has the following format:
++
+[,console]
+----
+Caused by: software.amazon.awssdk.services.s3.model.S3Exception: Access Denied (Service: S3, Status Code: 403, Request ID: MAYE68P6SYZMTTMP, Extended Request ID: L7mSpEzHz9gdxZQ8iNM00jKtoXYhkNrUzYntbbGkpFmUF+tQ8zL+fTpjJRlp2MDLNvhaVYCie/Q=)
+----
+
+Resolution::
+. Configure Deepstore on Pinot.
++
+See xref:pinot-ob-store-configure.adoc[]
++
+- *On GCP*, ensure that the secret has correct access to the cloud storage bucket.
+- *On AWS S3*, if the node does not have permissions to the S3 bucket, ensure that the access key and secret access key are populated:
++
+[,yaml]
+----
+pinot:
+    deepStore:
+      enabled: true
+      type: "s3"
+      useSecret: true
+      createSecret: true
+      dataDir: "s3://[REPLACE BUCKET HERE]/kfuse/controller/data"
+      s3:
+        region: "YOUR REGION"
+        accessKey: "YOUR AWS ACCESS KEY"
+        secretKey: "YOUR AWS SECRET KEY"
+----
+
+. If Pinot has the correct access credentials to the Deepstore, then the configured bucket creates a directory that matches the `dataDir`.

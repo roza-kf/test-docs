@@ -1,0 +1,28 @@
+= KfuseQL
+:description: Our Seaerch Query Language (KfuseQL) provides full search and timeseries support.
+:sectanchors: 
+:url-repo:  
+:page-tags: KfuseQL, Search Query Language
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+KfuseQL supports these language constructs:
+
+Search Operators::
+Search operators in KfuseQL search query language.
+
+Parse Operators::
+Parse fields in your log messages.
+
+Group and Aggregate Operators::
+Evaluate and group messages.
+
+Field Expressions::
+Expressions that create user-defined numeric, boolean, or string fields.
+
+Mathematical Expressions::
+Perform mathematical calculations on numerical from log lines.
+
+Transaction Analytics::
+Find and group related log data.

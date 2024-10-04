@@ -1,0 +1,27 @@
+= Disable non-SSO or htpassword based login
+:description: You can implement an exclusively SSO-based authentication for access to your Kloudfuse cluster.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/1068793892/Disable+non-SSO+or+htpassword+based+login
+
+
+You can implement an exclusively SSO-based authentication for access to your Kloudfuse cluster. This means disabling the admin login and access through `htpasswd`.
+
+Follow these steps:
+
+. Update the `custom_values.yaml` file:
++
+[,yaml]
+----
+kfuse-auth:
+  oauth2-proxy:
+    htpasswdFile:
+      enabled: false
+----
+
+include:upgrade-helm-config.adoc[]

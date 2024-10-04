@@ -1,0 +1,118 @@
+= Use Cases for Observability
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+
+// https://www.montecarlodata.com/blog-data-observability-use-cases/
+
+image:use-cases.svg[]
+
+# Core Data Observability Use Cases
+
+. Reduce The Amount Of Data Incidents
+. Detect Data Incidents Faster
+. Fix Data Incidents Faster
+. Prevent, Detect, Resolve Schema Changes
+. Prevent, Detect, Resolve Data Freshness Issues
+. Prevent, Detect, Resolve Data Volume Issues
+. Prevent, Detect, Resolve Data Distribution Issues
+
+# Mitigate Risk of System Failures
+
+. Safety Net For When Alerts Fail
+. Flag System Authorization And Integration Failures
+
+# Mitigate Risk of Code Failures
+
+. Query Change Detection
+. Query Simplification
+. Extra Attention For Big Jobs
+. Upstream Code Impacting Data Systems 
+. Human Error 
+
+# Mitigate Risk of Data Failures
+
+. Keep Third Parties Honest
+. Validate Data
+. Profile Data
+
+# Save Time
+
+. Save Data Engineer’s Time
+. Scale Small Teams
+. Save Data Analyst And Data Scientist’s Time
+. Save Analytical Engineer’s Time
+
+# Increase revenue
+
+. Improve Marketing Campaigns
+. Enable A Robust Experimentation Infrastructure
+. Differentiate Data Products
+. Keep Customers Happy
+. Keep Critical Machine Learning Algorithms Online
+. Move Your Generative AI Strategy From Pitch Deck To Reality
+. Support Reverse ETL Initiatives Like Personalization
+. Go Deep On Key Business Metrics
+
+# Avoid Costs
+
+. Prevent Charges Related To Overconsumption
+. Avoid Compliance And Regulatory Fines
+. Stop Revenue Bleeding
+
+# System Modernization and Optimization
+
+. Data Warehouse (Or Lakehouse) Migration
+. Integrate Data Stacks Post Merger
+. Reduce Clutter (tables, dashboards, etc)
+. Know When To Fix Vs. Refactor Data Pipelines
+
+# Improve DataOps Processes
+
+. Conduct Pre-Mortems
+. Analyze Data Incident Impact and Triage
+. Transition To A Data Mesh (Or Other Data Team Structure)
+. Prioritize Data Assets And Efforts 
+. Improve Incident Documentation 
+. Combat Alert Fatigue
+
+# Improve Visibility And Transparency
+
+. Increase Visibility Into Data Incident Management Workflows
+. Increase Visibility Into Other Domains And Decentralize Data Quality
+. Illustrate The Data Health “Big Picture”
+
+# Create Accountability
+
+. Set Data SLAs
+. Publish The Uptime of Your Data Products
+. Create Clear Lines of Ownership
+
+# Build Data Trust With The Business
+
+. Be First To Know
+. Proactively Flag Application Bugs
+. Keep Up With Hypergrowth
+. Justify And Expand Data Investments
+. Improve CRM Quality
+
+# Improve MLOps
+
+. Trigger ML Model Retraining 
+. Monitor For ML Model Feature Anomalies
+. Solve The Garbage In, Garbage Out Problem
+
+# Accelerate Self-Service Analytics And Data Democratization
+
+. Enable Self-Service Analytics
+. Execute A Smooth Data Catalog Roll Out
+
+# Go deeper and broader with your data quality coverage
+
+. Catch The Needle In The Haystack
+. Catch Unknown Unknowns

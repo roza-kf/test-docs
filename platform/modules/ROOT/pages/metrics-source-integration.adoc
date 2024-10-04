@@ -1,0 +1,18 @@
+= Metric source integration
+:description: Integrate various metrics data sources into Kloudfuse
+:sectanchors:
+:url-repo:
+:page-tags: Kloudfuse, observability, metrics, data source integration, integration
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Kloudfuse supports metrics ingestion from various sources, including cloud services, Kubernetes, platforms like Kafka, MySQL, and numerous applications.
+
+To configure these sources, see the following options:
+
+* xref:datadog-agent-metrics.adoc[Collecting Data Using Datadog Agent]
+* xref:prometheus.adoc[Prometheus Remote Write Config]
+* xref:datadog-agent.adoc#existing-datadog-install[Using an existing Datadog agent install]
+* xref:aws-cloudwatch-agent.adoc[AWS Cloudwatch Metrics]
+* xref:gcp-metrics-agent.adoc[GCP Stackdriver Metrics]

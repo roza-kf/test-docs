@@ -1,0 +1,11 @@
+= OpenTelemetry Collector on a Host Enviroment
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/1178533889/OpenTelemetry+Collector+on+a+Host+Enviroment
+

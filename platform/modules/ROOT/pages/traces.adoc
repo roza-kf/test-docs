@@ -1,0 +1,8 @@
+= Traces
+:description: Traces (APM)
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, Traces, APM
+:figure-caption!:
+
+include::definition/traces.adoc[]

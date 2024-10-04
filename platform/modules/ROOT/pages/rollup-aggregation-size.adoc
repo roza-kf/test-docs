@@ -1,0 +1,135 @@
+= Rollup Aggregation Step Size
+:descrition: These tables represent Kloudfuse’s calculation of the time interval for Line Charts, and Bar Charts.
+:sectanchors: 
+:url-repo:  
+:page-tags: rollup, aggregation, rollup aggregation, resolution, time interval, chart rendering, step size
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+The following tables represent Kloudfuse’s calculation of the time interval for Line Charts, and Bar Charts.
+
+[id=line-charts]
+.Rollup Intervals for Line Charts
+[%header,cols=2]
+|===
+|Overall Timeframe
+|Rollup Interval
+
+|0s – 300s
+|1s
+
+|6m – 12 m
+|2s
+
+| 13 m – 25 m
+| 5s
+
+| 26m – 50m
+| 10s
+
+| 51m – 75m
+| 20s
+
+| 76m – 150m
+| 30s
+
+| 151m – 300m
+| 1m
+
+| 301m – 750m
+| 2m
+
+| 751m – 25h
+| 5m
+
+| 26h – 50h
+| 10m
+
+| 51h – 75h
+| 20m
+
+| 76h – 150h
+| 30m
+
+| 151h – 300h
+| 1h
+
+| 301h – 25d
+| 2h
+
+| 26d – 50d
+| 4h
+
+| 50d – 75d
+| 8h
+
+| 75d – 150d
+| 12h
+
+| 150+d
+| 24h
+|===
+
+
+[id=bar-charts]
+.Rollup Intervals for Bar Charts
+[%header,cols=2]
+|===
+|Overall Timeframe
+|Rollup Interval
+
+|0s – 300s
+|1s
+
+|6m – 12 m
+|2s
+
+|13 m – 25 m
+|5s
+
+|26m – 50m
+|10s
+
+|51m – 75m
+|20s
+
+|76m – 150m
+|30s
+
+|151m – 300m
+|1m
+
+|301m – 750m
+|2m
+
+|751m – 25h
+|5m
+
+|26h – 50h
+|10m
+
+|51h– 75h
+|20m
+
+|76h – 150h
+|30m
+
+|151h – 300h
+|1h
+
+|301h– 25d
+|2h
+
+|26d – 50d
+|4h
+
+|50d – 75d
+|8h
+
+|75d – 150d
+|12h
+
+|150+d
+|24h
+|===

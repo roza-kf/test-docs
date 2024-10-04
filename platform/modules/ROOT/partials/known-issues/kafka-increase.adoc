@@ -1,0 +1,143 @@
+//id=kafka-increase
+
+In some scenarios, you have to increase the Kafka partition replication factor. 
+
+Resolution::
+
+. In the `custom-values.yaml` file, update the `global.kafkaTopics` section with new `replicationFactor`. This does not change the configuration of a deployed cluster. It is necessary for tracking  if you use yaml to re-deploy in a fresh installation.
+
+. If neccessary, resize Kafka Persistent Disk. 
++
+By default, Kfuse uses 10GB retention size per partition, set in the  `kafka.logRetentionBytes` variable.
+
+. Ensure that the persistent disk size has enough capacity.
++
+Use this formula:
++
+stem:[NP &#215; RF &#215; LRB / NKB]
++
+****
+where:
+
+NP::
+The number of partitions
+
+RF::
+The `ReplicationFactor` across all topics defined in `global.kafkaTopics`
+
+LRB::
+The `logRetentionBytes` variable
+
+NKB::
+The number of Kafka brokers
+****
+
+. If you must increase the size of the persistent disk; see xref:known-issues.adoc#increase-pvc[] and xref:known-issues.adoc#resize-pvc-azure[].
+
+. To start increasing the `ReplicationFactor`, log in to the Kafka Pod:
++
+[,console]
+----
+kubectl exec -ti -n kfuse kafka-0 -- bash
+----
+
+. Unset the `JMX_PORT`:
++
+[,console]
+----
+unset JMX_PORT
+----
+
+. Get the list of configured topics; you can get the list from `global.kafkaTopics`:
++
+[,console]
+----
+/opt/bitnami/kafka/bin/kafka-topics.sh --bootstrap-server :9092 --list
+----
+
+. Create the `topics.json` file, and save it in the `/bitnami/kafka` directory:
++
+[,json]
+----
+cat > /bitnami/kafka/topics.json
+{
+  "version": 1,
+  "topics": [
+    { "topic": "kf_events_topic" },
+    { "topic": "kf_logs_metric_topic" },
+    { "topic": "kf_logs_topic" },
+    { "topic": "kf_metrics_topic" },
+    { "topic": "kf_traces_errors_topic" },
+    { "topic": "kf_traces_metric_topic" },
+    { "topic": "kf_traces_topic" },
+    { "topic": "logs_ingest_topic" }
+  ]
+}
+----
+
+. Get the current partition assignment.
++
+The `--broker-list` should match the number of current `configured brokers`.
++
+This command sets up 3 Kafka brokers:
++
+[,console]
+----
+/opt/bitnami/kafka/bin/kafka-reassign-partitions.sh --bootstrap-server :9092 --generate --topics-to-move-json-file /bitnami/kafka/topics.json  --broker-list 0,1,2
+----
++
+This command prints the `Current partition replica assignment` and `Proposed partition reassignment configuration`. Ignore the proposed output; only the `Current partition replica assignment` is relevant.
++
+.Show output
+[%collapsible]
+====
+[,json]
+----
+{"version":1,"partitions":[{"topic":"kf_events_topic","partition":0,"replicas":[2],"log_dirs":["any"]},{"topic":"kf_logs_metric_topic","partition":0,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_logs_topic","partition":0,"replicas":[2],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":0,"replicas":[2],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":1,"replicas":[1],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":2,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":3,"replicas":[2],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":4,"replicas":[1],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":5,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":6,"replicas":[2],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":7,"replicas":[1],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":8,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":9,"replicas":[2],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":10,"replicas":[1],"log_dirs":["any"]},{"topic":"kf_metrics_topic","partition":11,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_traces_errors_topic","partition":0,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_traces_metric_topic","partition":0,"replicas":[0],"log_dirs":["any"]},{"topic":"kf_traces_topic","partition":0,"replicas":[2],"log_dirs":["any"]},{"topic":"logs_ingest_topic","partition":0,"replicas":[0],"log_dirs":["any"]}]}
+----
+====
+
+. Copy the `Ccurrent partition replica assignment` to a file.
+
+. Create a copy of the partition replica assignment file, and modify the `replicas` and `log_dirs` fields.
+
+. For each `replicas` field, add N number of brokers, depending on the desired `replicationFactor`.
++
+The `log_dirs` field must match. For each new broker that you add in the `replicas` field, add an "any" item in the `log_dirs` field.
++
+Balance the `replicas` across all brokers.
++
+For example (focusing on 1 parition of kf_metrics_topic)
++
+.Show output for 1 parition of `kf_metrics_topic`
+[%collapsible]
+====
+[,json]
+----
+...
+{"topic":"kf_metrics_topic","partition":3,"replicas":[2,0],"log_dirs":["any", "any"]}
+... snipped ...
+...
+====
+
+. Save the new assignment files in the `/bitnami/kafka` directory:
++
+[,console]
+----
+cat > /bitnami/kafka/topics.assignment.json
+<PASTE THE new assignments here>
+----
+
+. Run the reassignment:
++
+[,console]
+----
+/opt/bitnami/kafka/bin/kafka-reassign-partitions.sh --bootstrap-server :9092 --execute --reassignment-json-file /bitnami/kafka/topics.assignment.json
+----
+
+. Verify the reassignment:
++
+[,console]
+----
+/opt/bitnami/kafka/bin/kafka-reassign-partitions.sh --bootstrap-server :9092 --verify --reas
+----

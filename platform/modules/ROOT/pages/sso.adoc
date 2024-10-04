@@ -1,0 +1,52 @@
+= Single Sign On (SSO)
+:description: The Kloudfuse platform integrates with your existing identity provider. 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/825360391/Single+Sign+On+SSO+support
+
+
+For standalone user related configuration, please see here.
+
+For integrating with Google Auth, please see here.
+
+For integrating with OKTA, please see here.
+
+[id=custom-sign-in]
+# Customize the signin page
+
+The signin page of your Kloudfuse cluster has the following default configuration in the `extraArgs` section of the `custom-values.yaml` file :
+
+[,yaml]
+----
+     extraArgs:
+       # provider-display-name: default based on provider used
+       footer: "-"   # No footer
+       custom-sign-in-logo: "-"    # No Logo
+----
+
+To customize the signin message on your Kloudfuse cluster, follow these steps:
+
+[#step1]
+. Edit the `extraArgs` section of the `custom-values.yaml` file by adding the planned customizations.
++
+See the https://oauth2-proxy.github.io/oauth2-proxy/configuration/overview#environment-variables[OAuth2 Proxy^] documentation to choose the relevant options.
++
+[,yaml]
+----
+ kfuse-auth:
+   oauth2-proxy:
+     config:
+       ...
+     extraArgs:
+       provider-display-name: "Customer Provider"
+       custom-sign-in-logo: "https://framerusercontent.com/images/1JKfsQjCthSQEaxzteDKpRprZM.png"
+----
+
+include:upgrade-helm-config.adoc[]
+
+. Restart the `kfuse-auth` deployment to integrate the changes. For example, the changes in xref:#step1[Step1 1] update the banner as shown below.

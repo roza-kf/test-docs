@@ -1,0 +1,49 @@
+// id=pinot-controller
+
+To see these, follow these steps:
+
+. Ensure that `pinot-controller-0` pod is running and fully up:
++
+[,console]
+----
+kubectl get pods
+----
+
+. Enable `port-forward` for `pinot-controller`:
++
+[,console]
+----
+kubectl port-forward pinot-controller-0 9000:9000
+----
+
+. Dump the ideal state and external view for segments:
++
+[,console]
+----
+curl "http://localhost:9000/tables/<tableName>/idealstate" | jq > ideal_state.json 2>&1
+curl "http://localhost:9000/tables/<tableName>/externalview" | jq > external_state.json 2>&1
+----
+
+. Replace `<tableName>` with one of the following, depending on the stream type:
++
+Metrics:: `kf_metrics_REALTIME`
+
+Events:: `kf_events_REALTIME`
+
+Logs:: `kf_logs_REALTIME`
+
+Traces:: `kf_traces_REALTIME`
+
+. To get the ideal state, use this command:
++
+[,console]
+----
+curl "http://localhost:9000/tables/<tableName>/idealstate" | jq > ideal_state.json 2>&1
+----
+
+. To get the external view, use this command:
++
+[,console]
+----
+curl "http://localhost:9000/tables/<tableName>/externalview" | jq > external_state.json 2>&1
+----

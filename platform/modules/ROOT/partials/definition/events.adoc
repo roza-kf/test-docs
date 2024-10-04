@@ -1,0 +1,8 @@
+Events::
+An event is something that has happened in a system at a point in time. Events are discrete occurrences with precise temporal and numerical values. Through events, we can track crucial indidences, and detect potential problems associated with user requests. Because events are very time-sensitive, they include timestamps.
++
+Events provide context for metric data, as we can use them to identify our application’s most critical points, gaining better visibility into user behaviors that affect performance or security. Examples of events include:
++
+- User login attempts
+- Alert notifications
+- HTTP requests/responses

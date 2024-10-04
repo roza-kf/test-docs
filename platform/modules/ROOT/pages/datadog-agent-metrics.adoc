@@ -1,0 +1,8 @@
+= Datadog Agent Metrics
+:description: Collect Metrics data
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, Datadog, Metrics
+:figure-caption!:
+:table-caption!:
+:example-caption!:

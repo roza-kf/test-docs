@@ -1,0 +1,59 @@
+= Metrics Cardinality Analytics
+:description: Metrics Cardinality Analytics help you determine if you have excessive number of distinct metrics that lead to lower performance in your system
+:sectanchors:
+:url-repo:
+:page-tags: Kloudfuse, observability, metrics, Metrics Cardinality Analytics
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Rapidly analyzing high cardinality fields is key for effective observability. It helps identify specific issues and their causes, like finding a user or a specific endpoint that is causing problems.
+
+Metrics Cardinality Analytics help you determine if you have excessive number of distinct metrics that lead to lower performance in your system. See xref:glossary.adoc#cardinality[Cardinality].
+
+Because metrics cardinality is the number of unique combinations of metric names and their labels or dimensions, it determines the possible number of time series in your data.
+
+* While *high cardinality* metrics lead to detailed analysis and troubleshooting, they can also complicate data management and *reduce query performance*.
+* Higher cardinality increases the number of items to iterate over during queries, which *affects efficiency*.
+* With metrics tools where pricing depends on distinct tag combinations, eliminating spurious values can lead to *cost savings*.
+* When you define labels carefully, you can manage cardinality in your data, *remediating the risk* of increase in time series as the volume of ingested data grows.
+* High cardinality is common in cloud-native environments, and can result from *migrating legacy infrastructure* to a new format.
+
+[[determine-cardinality]]
+== Determine metrics cardinality
+
+. Navigate to the Metrics Cardinality Analytics by clicking the *Metrics* tab, and selecting *Cardinality Analytics*:
++
+image::metrics-cardinality-analytics-go.svg[Navigate to Metrics cardinality analytics]
+
+. The Metrics Cardinality report appears.
++
+image::metrics-cardinality-label.svg[Metrics Cardinality report, by label]
+
+Note that by default, the report computes cardinality by Label. This example reports the overall cardinality as *All cardinality: 294,885*.
+
+. Click the selector next to *Show Cardinality* page label, and select metrics. The table resets to show the calculations by *Metric*.
++
+image::metrics-cardinality-metric.svg[Metrics Cardinality report, by metric]
+
+. When you have a very large number of distinct metrics or labels, you can search for specific ones by name.
++
+Here, click *Select a metric*, and choose a tracked metric from the drop-down.
++
+image::metrics-cardinality-metric-select.svg[]
+
+. Observe that in this example, the cardinality of the metric `aws_autoscaling_group_and _warm_pool_total_capacity` is *10*.
++
+image::metrics-cardinality-metric-select-result.svg[]
+
+. To further refine your investigation, you can select a label that applies to that metric from the *Select a label* drop-down,
++
+image::metrics-cardinality-metric-label-select.svg[]
++
+And specify its value from *Select a value* drop-down.
++
+image::metrics-cardinality-metric-label-value-select.svg[]
+
+.
++
+image::metrics-cardinality-metric-label-value-result.svg[]

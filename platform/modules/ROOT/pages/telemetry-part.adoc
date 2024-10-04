@@ -1,0 +1,17 @@
+= Telemetry
+:description: Kloudfuse MELT reporting, telemetry, logs, metrics, traces, events, and more.
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, metrics,events, logs, traces, MELT, observability
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+image::../images/telemetry.svg[]
+
+include::../partials/definition/melt.adoc[]
+
+* xref:metrics.adoc[]
+* xref:events.adoc[]
+* xref:logs.adoc[]
+* xref:traces.adoc[]

@@ -1,0 +1,96 @@
+= Configure cloud-specific helm values
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/793411613/Configure+Cloud-Specific+Helm+Values
+
+[#ingress]
+# Ingress Internal Service Annotations
+
+By default, the Ingress internal service is disabled. If you enable it, you must annotate with using cloud-specific values.
+
+Include one of these configurations in your `custom_values.yaml` file:
+
+- xref:#gcp[GCP]
+
+- xref:#aws[AWS]
+
+- xref:#azure[Azure]
+
+[id=gcp]
+# GCP
+
+The internal ingress service must be annotated with Google’s load balancer information. 
+
+Include this configuration in the `custom_values.yaml` file:
+
+[,yaml]
+----
+ingress-nginx:
+  controller:
+    service:
+      internal:
+        enabled: true
+        annotations:
+          networking.gke.io/load-balancer-type: "Internal"
+          cloud.google.com/load-balancer-type: "Internal"
+----
+
+[id=aws]
+# AWS
+
+The internal ingress service must be annotated with AWS’s load balancer information. 
+
+Include this configuration in the `custom_values.yaml` file:
+
+[,yaml]
+----
+ingress-nginx:
+  controller:
+    service:
+      internal:
+        enabled: true
+        annotations:
+          service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+----
+
+[id=azure]
+# Azure
+
+To ensure that Kloudfuse is available on a public endpoint, create a public IP address in the same resource group as the AKS cluster. Remember to add inbound security rules for HTTP and HTTPS, as required.
+
+The internal ingress service must be annotated with Azure's load balancer information. 
+
+Include this configuration in the `custom_values.yaml` file:
+
+[,yaml]
+----
+ingress-nginx:
+  controller:
+    service:
+      loadBalancerIP: "<<PUBLIC IP ADDRES>>"
+      externalTrafficPolicy: "Local"
+      internal:
+        enabled: true
+        annotations:
+          service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+----
+
+On Azure, you must disable the TLS verification of the observability agent. 
+
+Add this configuration to the `custom_values.yaml` file:
+
+[,yaml]
+----
+kfuse-observability-agent:
+  datadog:
+    datadog:
+      kubelet:
+        tlsVerify: false
+----
+

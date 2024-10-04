@@ -1,0 +1,152 @@
+= Glossary
+:description: Definitions of terms used in Kloudfuse product and documentation, and generally in the observability domain.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://docs.splunk.com/observability/en/
+// https://docs.honeycomb.io/reference/glossary/
+// BEST: app dynamics, datadog, dynatrace, grafana, new relic, ServiceNow Cloud Observability, formerly Lightstep, splunk, 
+// appdynamics, sumo logic, raintank, amazon cloudwatch, elastic nv, instana, logshero (logz.io), prometheus, LogicMonitor, Monte Carlo Data, Signoz, Solar Winds APp Optics, Fluentd, Graylog, Liststep, Logstash, Metaplane, Middleware, 
+
+== A
+
+- agent
+- alert
+- analytics
+
+== B
+
+== C
+
+- call
+- call stack
+- counter
+- counter metric
+
+[[cardinality]]
+include:../partials/definitions/cardinality.adoc[]
+
+== D
+
+[[dashboard]]
+dashboard
+
+[[dimension]]
+dimension
+
+== E
+
+[[events]]
+include:../partials/definitions/events.adoc[]
+
+[[event-time-series]]
+event time series
+
+== F
+
+[[flame-graph]]
+flame graph
+
+== G
+
+[[gauge]]
+gauge
+
+[[gauge-metric]]
+gauge metric
+
+==  H
+
+[[high-cardinality]]
+include:definitions/high-cardinality.adoc[]
+
+==  I
+
+[[integration]]
+ integration
+
+==  J
+
+==  K
+
+[[kfuseql]]
+KfuseQL
+
+== L
+
+[[logs]]
+include:definitions/logs.adoc[]
+
+[[low-cardinality]]
+include:definitions/low-cardinality.adoc[]
+
+== M
+
+[[melt]]
+include:../partials/definitions/melt.adoc[]
+
+[[metrics]]
+include:definitions/metrics.adoc[]
+
+- metric cardinality
+- metric rollup
+- metric time series
+
+== N
+
+- notification
+
+== O
+
+include:definitions/observability.adoc[]
+
+- open telemetry
+
+== P
+
+include:definitions/protobuf.adoc[]
+
+- property
+
+== Q
+
+== R
+
+- rollup
+- rule
+- RUM (Real User Monitoring)
+
+== S
+
+include:definitions/span.adoc[]
+
+- sampling
+- signal
+- Service Level Objective (SLO)
+- stack trace
+
+== T
+
+include:definitions/telemetry.adoc[]
+
+include:definitions/traces.adoc[]
+
+- tag
+
+== U
+
+== V
+
+== W
+
+== X
+
+== Y
+
+== Z
+
+

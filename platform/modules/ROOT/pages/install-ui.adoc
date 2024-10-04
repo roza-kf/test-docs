@@ -1,0 +1,49 @@
+= Install Kloudfuse UI
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/724238341/Installation#UI
+
+Prerequisites:: Compleete the xref:install.adoc[Helm install].
+
+Here are the instructions for accessing the Kloudfuse Platform UI. 
+
+[NOTE]
+====
+It may take a few minutes for the LoadBalancer IP to come online.
+====
+
+[#export]
+# Enable the UI
+
+Watch the status and enable Kloudfuse using the following commands:
+
+[,console]
+----
+kubectl get svc --namespace kfuse -w kfuse-ingress-nginx-controller
+export SERVICE_IP=$(kubectl get svc --namespace kfuse kfuse-ingress-nginx-controller --template "{{ range (index .status.loadBalancer.ingress 0) }}{{.}}{{ end }}")
+echo http://$SERVICE_IP
+----
+
+[#access]
+# Access Kloudfuse UI and Grafana UI
+
+The Kloudfuse Platform has its own UI, with tabs for each stream type: Metrics, Events, Logs, and Traces. You can also view examine your cluster through the Grafana interface.
+
+The default credentials are: 
+
+username:: admin
+password:: password
+
+[WARNING]
+====
+We recommend that you:
+
+- xref:install-password.adoc[Change the default password]
+- xref:sso.adoc[Configure authentication]
+====

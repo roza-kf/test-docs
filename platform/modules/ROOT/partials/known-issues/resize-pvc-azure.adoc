@@ -1,0 +1,44 @@
+// id=resize-pvc-azure
+In some scenarios, you have to increase the size of PVC. On Azure, you must unattach PremiumV2_LRS disk before resizing.
+
+Resoltuions::
+. Cordon all nodes:
++
+[,console]
+----
+kubectl cordon <NODE>
+----
+
+. Delete the `statefulset`.
++
+[,console]
+----
+kubectl sts <STATEFULSET>
+----
+
+. In Azure Portal, verify that the disk is in unattached state:
++
+image::pvc-azure-detail.svg[User Management Interface]
+
+. Patch all PVCs to the desired size: 
++
+[,console]
+----
+kubectl patch pvc <PVC> --patch '{"spec": {"resources": {"requests": {"storage": "'<SIZE>'" }}}}'
+----
+
+. Uncordon the node:
++
+[,console]
+----
+kubectl uncordon <NODE>
+----
+
+. Update `custom_values.yaml` with disk size for the `statefulset` disk.
+
+. Run `helm upgrade` on kfuse using the updated `custom_values.yaml` file:
++
+[,console]
+----
+helm upgrade --install -n kfuse kfuse <source_location> --version <release_number>  -f custom_values.yaml
+----

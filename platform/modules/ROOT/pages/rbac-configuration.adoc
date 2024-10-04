@@ -1,0 +1,73 @@
+= RBAC Configuration
+:description: You must configure Kloudfuse to implement RBAC in your deployment.
+:sectanchors: 
+:url-repo:  
+:page-tags: RBAC, Role-Based Access Control, enable, enable RBAC, default user role, default policy, data access
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[TIP]
+
+====
+image::2.7.3.svg[Inline]
+This feature is only available in Release 2.7.3, and subsequent versions of Kloudfuse.
+====
+
+You must configure Kloudfuse to implement RBAC in your deployment. 
+
+Copy the following code in your `<custom_values.yaml>` file and make necessary edits. 
+
+The following sections outline the basic steps and provide examples on how to configure various components of RBAC. 
+
+- xref:rbac-enable[Enable RBAC]
+- xref:default-role[Default User Role]
+- xref:default-policy[Default Policy]
+
+To review general concepts, see xref:rbac.adoc[Role-Based Access Control (RBAC)].
+
+[id=rbac-enable]
+#Enable RBAC
+
+The default RBAC policy is a fully-enabled RBAC, with full access. 
+
+To enable RBAC, add the following code to the `<custom_values.yaml>` file:
+
+[source,yaml]
+----
+RBACEnabled: true
+----
+
+[id=default-role]
+# Default User Role
+
+The default user role for new users in Kloudfuse is *Editor*.
+
+*Admins* can change this setting in the UI for individual users. See xref:user-managemnt.adoc#assign-roles[Assign Roles].
+
+To change the default assignment for new users to *Viewer*, use the following code to the `<custom_values.yaml>` file:
+
+[source,yaml]
+----
+rbacDefaultUserRole: Viewer
+----
+
+[id=default-policy]
+# Default Policy
+
+Users who do not have a Policy assigned through the UI get a default level of access, depending on configuration:
+
+[source,yaml]
+----
+default_rbac_policy: rbac_allow_all
+----
+
+To change the default policy for the various roles, use the following code to the `<custom_values.yaml>` file:
+
+[source,yaml]
+----
+default_rbac_policy: rbac_allow_none
+----
+
+See xref:policy-managemnt.adoc#policy-change[Change a Policy] to set the policy in the UI.
+

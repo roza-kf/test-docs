@@ -1,0 +1,14 @@
+site:
+  title: Kloudfuse Docs
+  url: https://docs.kloudfuse.com
+  version: '1.0'
+  start_page: public:home.adoc
+  content:
+    sources:
+      - ./public/pages/
+      start_path: docs
+ui:
+  bundle: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+  snapshot: true
+  
+

@@ -1,0 +1,20 @@
+= Release notes, news, and notifications
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+
+// https://www.montecarlodata.com/blog-data-observability-use-cases/
+
+image:release.svg[]
+
+* xref:release-notes.adoc[Release notes]
+* xref:known-issues.adoc[Known issues]
+* xref:deprecations.adoc[Deprecation]
+* xref:support.adoc[Support]
+
+

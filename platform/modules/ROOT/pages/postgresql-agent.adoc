@@ -1,0 +1,35 @@
+= Enable postgres data collection
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/803012609/Enable+postgres+data+collection
+
+You must explicitly enable the agent to collect metrics and logs from PostgreSQL.
+
+. Deploy the agent on kubernetes.
+. Run these steps:
++
+[,console]
+----
+kubectl exec -it <pod> bash
+psql -U postgres
+enter password to complete login
+
+create user datadog with password '<PASSWORD>';
+grant pg_monitor to datadog;
+grant SELECT ON pg_stat_database to datadog;
+----
+
+. In teh PostgreSQL pods, add these annotations:
++
+[,yaml]
+----
+ad.datadoghq.com/mysql.check_names: '["postgres"]'
+ad.datadoghq.com/mysql.init_configs: '[{}]'
+ad.datadoghq.com/mysql.instances: '[{"host": "%%host%%", "port":5432, username": "datadog", "password" : "<password>"}]'
+----

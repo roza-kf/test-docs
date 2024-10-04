@@ -1,0 +1,63 @@
+= What's New in Kloudfuse
+:description: Learn about new features in the Kloudfuse platform
+:sectanchors: 
+:url-repo:  
+:page-tags: release notes, readme, what's new, kloudfuse platform
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[#2-7-4]
+== 2.7.4 (latest)
+September 
+
+Metrics Roll Up::
+Kloudfuse now supports 5 minutes roll up of metrics data, computed directly from the data stream. 
++
+See xref:metrics-roll-up.adoc[Metrics Roll Up].
+
+Service Catalog::
+Until this release, Kloudfuse's APM interface showed only the services that sent data within the selected time block. We now show all services, including the ones that may be stopped or paused.
+
+Facet Exploration and Analytics::
+This feature introduces the following changes to facet management in the Kloudfuse UI:
++
+- Show a flat list of facets that users can add to their artifacts, or remove. 
+
+- To add, user goes to log event detail pane, selects and clicks add to side bar.
+
+- Facets in the side bar are datatype-specific, but not source-specific.
+
+- Kloudfuse remembers the list of facets. 
+
+- The Search bar only auto-completes facets from the side bar.
+
+Log Archive and Hydration::
+You can now process current or historical data through Kloudfuse, and store it a[tree]
+
+logs in a private archival system. You can "hydrate" data by bringing it out of an archive into Kloudfuse for analysis.
+
+New dashboards and Integrations::
+This feature ...
+
+Graviton support::
+We now support Graviton has 64-bit Arm Neoverse core architecturea, in adition to AMD64 (X86) available in earlier releases.
+
+The comparison metrics are ...
+
+[#2-7-3]
+== 2.7.3
+
+August 28, 2024
+
+In this release, we made changes to Logs, APM, and RBAC:
+
+Logs::
+We made significant improvements to the performance of log search with efficient indexes; comparable searches are now an order of magnitude faster.
+
+APM::
+We implemented the necessary bug fixes.
+
+RBAC::
+We added default access policies for users without explicit policy assignment. See xref:rbac-configuration.adoc#default-policy[Default Policy].
+

@@ -1,0 +1,160 @@
+= Manage Users
+:description: This section covers topics related to managing users in Kloudfuse.
+:sectanchors: 
+:url-repo:  
+:page-tags: RBAC, Role-Based Access Control, permissions, users, security, data access, Admin tab
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[TIP]
+====
+image::2.7.3.svg[Inline]
+This feature is only available in Release 2.7.3, and subsequent versions of Kloudfuse.
+====
+
+This section covers topics related to managing users in Kloudfuse. 
+
+[CAUTION]
+====
+- Users must have unique emails.
+- User management actions can be performed only by users with Admin privileges.
+====
+
+[TIP]
+====
+Kloudfuse fully provisions users on their initial (first) login. 
+====
+
+.User Management Interface
+image::user-management-interface.png[User Management Interface]
+
+To manage users, follow these steps:
+
+. Click the Admin tab.
+
+. Select User Management from the menu.
+
+. The User Management interface appears. It contains the following:
+
+.. Search bar to locate specific users
+
+.. List of users, including their Name, Login, Email, and Role.
+
+Proceed to make changes, as described in Assign Roles, Assign Names, and Delete a User.
+
+[id=assign-roles]
+# Assign Roles 
+
+There are three possible roles for users: 
+
+Admin::
+Can change roles and permissions)
+Editor::
+Can make some changes
+Viewer::
+can only view data, but cannot make any changes.
+
+By default, Kloudfuse assigns the Editor role to all users. Each organization can configure their own choice of default role for new users.
+
+To change the user’s role, follow these steps:
+
+. Hover your pointer over the Role you plan to change.
++
+Here, we are changing the role of user7, who is currently and Editor.
+
+. When the Edit (pencil) icon appears, click on it.
++
+.Begin editing the role assigned to the user
++
+image:role-edit.png[Begin editing the role assigned to the user]
+
+. The User Management interface changes to show the detail of the specific user.
++
+.User Management: detail of one user
++
+image::user-detail.png[User Management: detail of one user]
+
+. In the Role section, click *Change Role*.
+
+. When the Role menu appears, select a new role.
++
+Here, we are change the role from Editor to Admin.
++
+.Changing the role from Editor to Admin
++
+image:role-editor-to-admin.png[Changing the role from Editor to Admin]
+
+. Click Save.
+
+You should see a notification that Kloudfuse changed the role successfully.
+
+The User Management interface now lists user7 as Admin.
+
+.user 7 has an Admin role
++
+image:user-admin-role.png[user 7 has an Admin role]
+
+[id=assign-names]
+# Assign Names
+
+When a user first signs into Kloudfuse, they don’t automatically have their name added to the system.
+
+To assign the name, follow these steps:
+
+Hover your pointer over the role of the user to whom you plan to assign a name.
+Here, we are changing the name of user7.
+
+When the Edit (pencil) icon appears, click on it.
+
+Open image-20240822-185808.png
+image-20240822-185808.png
+Edit user
+The User Management interface changes to show the detail of the specific user.
+
+Open image-20240822-190152.png
+image-20240822-190152.png
+User Management: detail of the user
+In the Name section, click the Edit (pencil) icon.
+
+In the Enter name field, enter the name of the user.
+
+
+Open image-20240822-191920.png
+image-20240822-191920.png
+Edit Name
+Click Save. 
+
+You should see a notification that Kloudfuse changed the name successfully.
+
+The User Management interface now lists user7 as Pippi Longstocking.
+
+Open image-20240822-192358.png
+image-20240822-192358.png
+user7 is named Pippi Longstocking
+
+[id=delete-user]
+# Delete a User
+
+Admins can also delete users from the Kloudfuse system.
+
+Follow these theps
+
+Hover your pointer over the role of the user you plan to delete from the system.
+
+When the Delete (trashcan) icon appears, click it.
+Here, we are deleting user15.
+
+Open image-20240822-205645.png
+image-20240822-205645.png
+Deleting a user
+Kloudfuse prompts you to confirm deleting a user.
+You can click Delete to confirm, or Cancel to stop deleting the user.
+
+
+Open image-20240822-205859.png
+image-20240822-205859.png
+Confirm or cancel deleting the user
+You should see a notification that Kloudfuse deleted the user successfully.
+
+The User Management interface no longer lists user15.

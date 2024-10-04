@@ -1,0 +1,64 @@
+= Uninstall Kloudfuse
+:description: To delete the Kloudfuse installation, you must delete the application from helm, delete the persisstent disk, and then delete data from the Deepstore.
+:sectanchors: 
+:url-repo:  
+:page-tags:
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/724238341/Installation#Uninstall
+
+To delete the Kloudfuse installation, follow these steps:
+
+[%interactive]
+* [ ] xref:#helm-delete[Helm delete]
+* [ ] xref:#disk-delete[Delete persistent disks]
+* [ ] xref:#deepstore-delete[Delete data from the Deepstore]
+
+[#helm-delete]
+# Helm delete
+At the helm, delete dekfuse chart and/or delete the ‘kfuse’ namespace. 
+
+The helm delete does not get rid of the data stored in persistent disk or in the deepstore in the GCP/AWS/Azure cloud buckets.
+
+[,console]
+----
+helm delete kfuse
+----
+
+[#disk-delete]
+# Delete persistent disks
+To delete the persistent disks, issue the following command:
+
+[,console]
+----
+kubectl delete pvc -n kfuse -l app.kubernetes.io/instance=kfuse
+----
+
+[#deepstore-delete]
+# Delete data from the Deepstore
+
+////
+Must install and configure following if plan to implement tabs:
+https://github.com/spring-io/spring-asciidoctor-extensions
+////
+
+Run the following code to delete data from the Deepstore, depending on type:
+
+[id=deepstore-delete-gcp]
+GCP::
+[,console]
+----
+gsutil -m rm -r gs://<pinot-bucket-name>/controller
+----
+
+[id=deepstore-delete-aws]
+AWS::
+[,console]
+----
+aws s3 rm s3://<pinot-bucket-name>/controller --recursive
+----
+
+
+

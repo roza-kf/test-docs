@@ -1,1 +1,1 @@
-# kf-docs
+# README for docs content repository

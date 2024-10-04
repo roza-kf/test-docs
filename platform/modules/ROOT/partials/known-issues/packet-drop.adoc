@@ -1,0 +1,20 @@
+// id=packet-drop
+
+The ingress-NGINX logs the error `client intended to send too large body`.
+
+[,yaml]
+----
+2023/03/06 05:38:22 [error] 43#43: *128072996 client intended to send too large body: 1097442 bytes, client: XXXX, server: _, request: "POST /ingester/v1/fluent_bit HTTP/1.1", host: "XXXX"
+----
+
+Resolution:: 
+The default request body size is 1M. Configure Ingress-NGINX to accept larger request body size; include the following specification in the `custom-values.yml` file:
++
+[,yaml]
+----
+ingress-nginx:
+  controller:
+    config:
+      proxy-body-size: <REPLACE THE BODY SIZE HERE, e.g., 8m. Setting to 0 will disable all limits.>
+----
+ 

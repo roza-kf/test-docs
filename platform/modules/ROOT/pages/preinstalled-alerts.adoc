@@ -1,0 +1,18 @@
+= Preinstalled infrastructure and self-monitoring alerts
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Kloudfuse stack comes installed with a few very useful infrastructure
+(K8s and physical resource) alerts which are designed to be functional
+in any k8s based environment out the box. It also has in-built alerts
+which are useful for “self-monitoring” (to get notified if the Kloudfuse
+stack itself is having functional issues). However, the user is required
+to configure
+the notifications so that they can be notified when the alert is
+firing. The preinstalled alerts can be reviewed and edited from the main
+alerting page.

@@ -1,0 +1,10 @@
+= Container Resource Attributes Collection for Telemetry Data
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/984285374/Container+Resource+Attributes+Collection+for+Telemetry+Data

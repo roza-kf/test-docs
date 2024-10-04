@@ -1,0 +1,10 @@
+= Configure Google Authentication
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/742457348/Configure+Google+OAuth2+Authentication

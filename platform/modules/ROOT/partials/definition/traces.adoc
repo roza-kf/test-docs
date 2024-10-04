@@ -1,0 +1,9 @@
+Traces::
+A trace is a collection of operations that represents a unique transaction handled by an application and its constituent services. It is the path of a request or workflow as it progresses from one component of the system to another, capturing the entire request flow through a distributed system.
++
+Traces expose the directionality and relationships between two data points, service interactions, and the effects of asynchrony. When analyzing trace data, we better understand the performance and behavior of a distributed system.
++
+Some examples of traces include:
++
+- A SQL query execution
+- A function call during a user authentication request

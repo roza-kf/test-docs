@@ -1,0 +1,14 @@
+= Metrics Summary
+:description: Metrics Summary provides a concise view of all metrics ingested by the system, along with all tags and their possible values within the selected time range.
+:sectanchors:
+:url-repo:
+:page-tags: Kloudfuse, observability, metrics, Metrics Summary
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+The Metrics Explorer provides a concise view of all metrics ingested by the system, along with all tags and their possible values within the selected time range.
+
+Navigate to the Metrics Summary by clicking the *Metrics* tab, and selecting *Summary*:
+
+image::../images/metrics-summary-go.svg

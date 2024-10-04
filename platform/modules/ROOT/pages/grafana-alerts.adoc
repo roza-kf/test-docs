@@ -1,0 +1,16 @@
+= Grafana alerts
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+We understand if you are familiar with the Grafana UI and would like to continue using it for your alerting. Kloudfuse therefore embeds the Grafana UI as an option. See xref:install-ui.adoc#access[Access
+Grafana] for information.
+
+From here on all functionalities that you use Grafana with should be
+available "as is". See 
+https://grafana.com/docs/grafana/latest/alerting/[Grafana Alerting^]
+documentation.

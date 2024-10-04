@@ -1,0 +1,13 @@
+= Appendicies
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+image:appendicies.svg[]
+
+* Various lists of shortcuts
+* xref:glossary.adoc[Glossary]

@@ -1,0 +1,40 @@
+= Support
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+# Contact Kloudfuse support
+
+Whenever you need help, you can reach our Support team by email, at mailto:support@kloudfuse.com[].
+
+# Support ticket priorities
+
+Kloudfuse uses the following priority levels to support our customers:
+
+Low::
+An issue with a minor service impact.
++
+Non-critical Kloufuse services with operational impact cannot be used, or are hard to use.
++
+There is no direct impact on service availability.
+
+High::
+Critical Kloudfuse services cannot be accessed, are failing, have an impact on production, exhibit service degradation or partial impairment, with no known workarounds. 
++ 
+This ticket priority alerts Chronosphere Support on-call resources 24x7 to triage the reported issue.
+
+# Ticket status
+
+All tickets have a status:
+
+Open::
+Kloudfuse Support is actively working on the ticket, or the ticket has been filed recently and is in queue for review by our team.
+
+Waiting for your reply::
+Kloudfuse Support has reviewed the ticket, and either shared a workaround, provided a solution, or has follow-up questions. We are waiting for your response to confirm that the workaround or solution fixes the problem, or to get the neccessary supplemental information.
+Solved::
+The ticket is closed.

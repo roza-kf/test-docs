@@ -1,0 +1,63 @@
+= Migration Scenarios and Integrations
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+# Migration Scenarios
+
+Whether you want to use the Kloudfuse platform from a fresh start or use
+your existing collectors, Kloudfuse got you covered. Kloudfuse supports
+the following scenarios to collect data streams:
+
+## Integrations
+
+* xref:datadog-agent.adoc[Datadog Agent: Collecting data]
+** xref:datadog-agent-logs.adoc[Datadog Logs]
+** xref:datadog-agent-metrics.adoc[Datadog metrics]
+** xref:datadog-agent-traces.adoc[Datadog Traces]
+* xref:ec2-agents.adoc[Configure Agents on EC2]
+* xref:prometheus-agent.adoc[Prometheus Remote Write Config]
+* xref:kfuse-knight-agent.adoc[Kfuse-Knight for Instrumentation-less Tracing]
+* xref:aws-cloudwatch-agent.adoc[Collection ofAWS CloudWatch Logs and Metrics]
+* xref:aws-events-agent.adoc[Collection of AWS Events]
+* xref:gcp-metrics-agent.adoc[Collection of GCP Metrics]
+* xref:gcp-pub-sub-logs.adoc[Collection of Logs From GCP Pub/Sub]
+* xref:github-events.adoc[Collection of Github Events]
+* xref:filebeat-agent.adoc[Filebeat Configuration]
+* xref:fluent-bit-agent.adoc[Fluent Bit Integration]
+** xref:fluent-bit-agent-kloudfuse.adoc[Integrating Kloudfuse ingester with fluent-bit]
+* xref:fluentd-agent.adoc[Fluentd integration]
+* xref:otel-agent.adoc[OpenTelemetry Integration]
+** xref:otel-agent-traces.adoc[OpenTelemetry Traces Integration]
+* xref:elastic-agent-traces.adoc[Elastic APM Traces]
+* xref:circleci-agent.adoc[CircleCI Integration]
+* xref:postgresql-agent.adoc[Enable postgres data collection]
+** xref:postgresql-agent-self.adoc[Collection of self-managed postgres metrics]
+* xref:analytics-advanced-monitoring-configure.adoc[Configure Advance Monitoring and Analytics]
+* xref:docker-workloads.adoc[Integration with Workloads Deployed on Docker Containers using Docker-Compose]
+** xref:datadog-agent-docker.adoc[Datadog Agent Installation using Docker-Compose]
+** xref:otel-agent-docker.adoc[OpenTelemetry Collector on a Docker Environment]
+* xref:otel.adoc[OpenTelemetry]
+** xref:otel-migrate.adoc[Migration to OpenTelemetry APM]
+** xref:otel-kubernetes.adoc[OpenTelemetry Collector Integration on Kubernetes Environment]
+** xref:otel-runtime-metrics.adoc[OpenTelemetry Runtime Metrics]
+** xref:otel-containers.adoc[Container Resource Attributes Collection for Telemetry Data]
+** xref:otel-host.adoc[OpenTelemetry Collector on a Host Enviroment]
+
+
+# Other scenarios
+
+On data ingestion side, we add support for new scenarios and
+integrations fairly regularly depending on our customers requirements.
+On query and visualization side, we currently support
+https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/754024460[conversion
+of several query languages to an open source standard query language]
+(PromQL). We would be happy to work with you to integrate with your
+choice of visualization and data analytics tooling. So, please do not
+hesitate to
+mailto:info@kloudfuse.com[contact
+us] if you have a situation that we don't cover yet.

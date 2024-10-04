@@ -1,0 +1,8 @@
+// id=rollup-ui
+When rendering charts in Kloudfuse UI, we determine the rollup time intervals based on the overall timeframe that the chart renders. The Grafana UI uses both the time interval and the width of the chart that it renders. This leads to detectible differences in how charts appear in Kloudfuse vs. Grafana. This is not an error in Kloudfuse. 
+
+Resolution:: None
+
+Additional resources:: xref:rollup-aggregation.adoc[Rollup Aggregation in Charts]
++
+xref:rollup-aggregation-size.adoc[Step Size Calculations for Charts]

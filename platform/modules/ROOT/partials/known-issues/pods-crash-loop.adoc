@@ -1,0 +1,40 @@
+// id=pods-crash-loop
+
+* Container logs shows the following JFR initialization errors:
++
+[,console]
+----
+jdk.jfr.internal.dcmd.DCmdException: Could not use /var/pinot/server/data/jfr as repository. Unable to create JFR repository directory using base location (/var/pinot/server/data/jfr)Error occurred during initialization of VM
+Failure when starting JFR on_create_vm_2
+----
+
+* Pinot server realtime disk usage is at 100%.
+
+Resolution::
++
+* In Kloudfuse Release 2.6.5 and earlier:
+. The Pinot server realtime runs out of disk space if Pinot is unable to move the segments to the offline server. In some cases, the offline servers hit an exception, stop handling new messages, and must be restarted:
++
+[,console]
+----
+kubectl rollout restart -n kfuse statefulset pinot-server-offline
+----
+
+. The size of the persistent disk attached to Pinot Server Realtime must be increased.
++
+See xref:known-issues.adoc#increase-pvc[Increase existing PVC size] and xref:known-issues.adoc#resize-pvc-azure[Resize PVC on Azure]
+
+* In Kloudfuse Release 2.6.7 and later, you do not have to explicitly resize the Pinot server realtime disks. Follow these steps:
++
+. Restart the Pinot server offline:
++
+[,console]
+----
+kubectl rollout restart -n kfuse statefulset pinot-server-offline
+----
+
+. Edit `pinot-server-realtime sts` to `set BALLOON_DISK env` variable to `false`.
+
+. Wait for pinot server realtime to start,  and to complete moving segments to offline servers.
+
+. Edit `pinot-server-realtime sts` to `set BALLOON_DISK env` variable to `true`.

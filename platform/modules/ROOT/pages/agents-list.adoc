@@ -1,0 +1,9 @@
+= Supported agents
+:description: The Kloudfuse platform supports ingestion of data from an ever-expanding list of data providers.
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse platform, data agent, timeserties, time series, data ingestion, logs, events, metrics, trances, APM, ASM
+:figure-caption!:
+:table-caption!:
+:exmple-caption!:
+

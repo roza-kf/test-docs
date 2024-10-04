@@ -1,0 +1,10 @@
+= ASM
+:description: ASM
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, Traces, ASM
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+include::partial$traces.adoc[]

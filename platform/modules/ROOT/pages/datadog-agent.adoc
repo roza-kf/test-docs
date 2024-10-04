@@ -1,0 +1,424 @@
+= Datadog Agent
+:description: Install and Configure Datadog Agent for Kloudfuse
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, Datadog, injest data
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+
+[id=requirements]
+== Requirements
+
+[WARNING]
+====
+When using an existing dd-agent version (and just pointing it to KloudFuse instead of DD HQ), 
+dd agent version must be 7.41 or higher.
+====
+
+Validate the agent using these steps:
+
+. Check the chart version with helm list - should be 3.1.10 or higher
++
+[,yaml]
+----
+helm list -n <namespace-where-agent-is-installed>
+----
+
+. Check the image version of the agent with describe pod on dd-agent
+pod.
++
+[,yaml]
+----
+k describe pod -n <namespace-where-agent-is-installed> | grep Image
+    Image:         gcr.io/datadoghq/agent:7.36.0
+----
+
+[[install-datadog-agent]]
+== Install a New DataDog Agent
+
+Consider these install setup scenarios:
+
+Kloudfuse stack & target both in same VPC and in same K8S cluster (Default)::
+This is the default scenario. 
++ 
+Use the provided https://kloudfuse.atlassian.net/wiki/pages/viewpageattachments.action?pageId=753991796#:~:text=dd%2Dvalues%2Dkfuse%2Dcustomer.yaml[values file^] for the agent, and follow the steps in the xref:#install-command[Install Command] section.
+
+Kloudfuse stack & target both in same VPC, but in different K8S cluster::
++
+. Search for `_url` in the provided file. 
+
+. Comment out the *Default Scenario* and remove comment from *Scenario 1*. 
+
+. To determine the necessary IP address values:
+
+.. Get ingress internal IP :
++
+[,yaml]
+----
+kubectl get svc -n kfuse | grep kfuse-ingress-nginx-controller-internal
+kfuse-ingress-nginx-controller-internal   LoadBalancer   10.53.250.80    10.53.232.3   80:32716/TCP,443:30767/TCP   125m
+----
+
+.. Replace all settings with `_url` suffix. +
+For example:
++
+[,yaml]
+----
+dd_url: http://10.53.250.80/ingester
+logs_dd_url: "10.53.250.80:80"
+----
+
+Kloudfuse stack hosted in a different VPC::
+We have a stack that you can use, at http://customer.kloudfuse.io[customer.kloudfuse.io^]. 
++
+. Search for `_url` in the provided file. Comment out the
+*Default Scenario* options and remove comments from *Scenario 2*. 
+
+. Replace the
+`customer.klodufuse.io` with your custom DNS name entry.
+
+. Replace all settings with `_url` suffix.
++ 
+For example:
++
+[,yaml]
+----
+dd_url: http://customer.kloudfuse.io/ingester
+logs_dd_url: "customer.kloudfuse.io:443"
+----
+
+[id=required-configuration]
+[[Required-Datadog-configurations]]
+## Required Datadog Configutations
+
+The yaml files in the preceding sections already contain the Datadog
+configurations that are necessary for Kloudfuse to ingest the data correctly. 
+
++ The following code contains the necessary configurations.
+
+[,yaml]
+----
+datadog:
+  logsEnabled: true
+  logs:
+    enabled: true
+    containerCollectAll: true
+    containerCollectUsingFiles: true
+    autoMultiLineDetection: true
+  kubeStateMetricsEnabled: false
+  kubeStateMetricsCore:
+    enabled: true
+    ignoreLegacyKSMCheck: true
+  orchestratorExplorer:
+    enabled: true
+  processAgent:
+    enabled: true
+  prometheusScrape:
+    enabled: true
+    version: 1
+    additionalConfigs:
+      - configurations:
+        - send_monotonic_counter: false
+          send_distribution_counts_as_monotonic: false
+          send_distribution_sums_as_monotonic: false
+          send_histograms_buckets: true
+          max_returned_metrics: 999999
+          min_collection_interval: 15          
+clusterAgent:
+  enabled: true
+  datadog_cluster_yaml:
+    process_config:
+      container_collection:
+        enabled: false
+    orchestrator_explorer:
+      manifest_collection:
+        enabled: false
+    use_v2_api:
+      events: true
+      series: true
+      service_checks: true
+  admissionController:
+    enabled: false
+agents:
+  image:
+    tagSuffix: jmx
+  useConfigMap: true
+  customAgentConfig:
+    skip_ssl_validation: false
+    enable_stream_payload_serialization: false
+    process_config:
+      container_collection:
+        enabled: false
+    orchestrator_explorer:
+      manifest_collection:
+        enabled: false
+    use_v2_api:
+      events: true
+      series: true
+      service_checks: true
+    logs_config:
+      use_http: true
+      logs_no_ssl: true
+      auto_multi_line_detection: true
+      use_v2_api: false
+    apm_config:
+      enabled: true
+      apm_non_local_traffic: true
+    metadata_providers:
+      - name: host
+        interval: 300          
+----
+
+[id=high-cardinality-tags]
+## Collect high cardinality tags
+
+The Datadog Agent is installed with cardinality set to *orchestrator*
+level, eanling granular (both pod and container-level) tagging of metrics. 
+
+For more information, see Datadog documentation on https://docs.datadoghq.com/getting_started/tagging/assigning_tags/?tab=noncontainerizedenvironments#tags-cardinality[Assigning Tags^].
+
+The default setting in the Datadog Agent is set to *low*, tagging only at host level.
+
+[id=install-command]
+== Install Command
+
+If you haven’t before, add datadog helm repo:
+
+[,yaml]
+----
+helm repo add datadog https://helm.datadoghq.com
+helm repo update
+----
+
+Install the datadog agent with updated values (cmd below assumes the
+file is called dd-values-kfuse.yaml. Replace that argument with the
+filename that’s relevant to your scenario).
+
+[,yaml]
+----
+# Create separate namespace for the agent to be installed (if required)
+kubectl create namespace kfuse-agent
+helm upgrade --install kfuse-agent -f dd-values-kfuse.yaml datadog/datadog -n kfuse-agent --version 3.6.7
+----
+
+[id=existing-datadog-install]
+== Using Existing Datadog Agent Install
+
+If you have an existing datadog agent, then you can use the same agent to send your data streams to the Kloudfuse platform. 
+
+[id=streaming-kloudfuse-and-datadog]
+== Streaming to Kloudfuse in addition to Datadog
+
+Datadog Agent supports dual shipping. To send the data to Kloudfuse in addition to the Datadog, add the following in the datadog agent helm values. 
+
+[NOTE]
+====
+Change for each stream, as necessary.
+====
+
+. Under the `agents.customAgentConfig` key, specify:
+
+[,yaml]
+----
+additional_endpoints:
+  "http://<kfuse-ingress-external-ip>/ingester":
+   - <api_key>
+use_v2_api:
+  series: true
+logs_config:
+  ...
+  use_v2_api: false
+  additional_endpoints:
+    - api_key: <api_key>
+      Host: <kfuse-ingress-external-ip>
+      Port: 443
+      use_compression: true
+apm_config:
+  ...
+  additional_endpoints:
+    "https://kfuse-ingress-external-ip>":
+       - <api_key>
+process_config:
+  ...
+  additional_endpoints:
+    "https://kfuse-ingress-external-ip>":
+       - <api_key>       
+metadata_providers:
+  - name: host
+    interval: 300    
+----
+
+. Under the `clusterAgent.datadog_cluster_yaml` key, specify:
+
+[,yaml]
+----
+additional_endpoints:
+  "http://<kfuse-ingress-external-ip>/ingester":
+   - <api_key>
+use_v2_api:
+  series: true
+process_config:
+  ...
+  additional_endpoints:
+    "https://kfuse-ingress-external-ip>":
+       - <api_key>
+orchestrator_explorer:
+  ...
+  additional_endpoints:
+    "https://kfuse-ingress-external-ip>":
+       - <api_key>
+----
+
+[id=custom-tags]
+== Adding Custom Tags
+
+You can add custom tags to the agent, ensuring that all metrics that you agent collects has the correct tag. 
+
+To add custom tags, follow
+these steps:
+
+. Update `dd-values-kfuse.yaml` file to include the following code to enable
+custom tags.
++
+[NOTE]
+====
+Each tag must be in the form `key:value`,  a string separated by a column (`:`).
+====
++
+[,yaml]
+----
+datadog:
+  tags:
+    - custom_tag_name:custom_tag_value
+----
+
+. The kfuse helm `custom-values.yaml` file must have an allow-list for the new custom tags.
++
+[CAUTION]
+====
+You must append the following entry the existing list. Otherwise, the system may overwrite existing (and necessary) default values.
+
+Contact mailto:info@kloudfuse.com[Kloudfuse^] for help.
+====
++
+[,yaml]
+----
+ingester:
+  config:
+    hostTagIncludes:
+    - kfuse
+    - kube_cluster_name
+    - kubernetes.io/hostname
+    - node.kubernetes.io/instance-type
+    - org_id
+    - project
+    - topology.kubernetes.io/region
+    - topology.kubernetes.io/zone
+    ...
+    - custom_tag_name
+----
+
+[id=prometheus-autodiscovery]
+== Enabling Pods to be detected by Prometheus Autodiscovery
+
+In addition to enabling `prometheusScrape` in the Datadog `values.yaml`, the pods must have the following annotations. 
+
+[NOTE]
+====
+If you deploy application pods through helm, the helm values
+support a `podAnnotations` section.
+====
+
+[,yaml]
+----
+prometheus.io/path: <specify prometheus endpoint path, e.g., /metrics>
+prometheus.io/port: <SPECIFY promethus endpoint here, e.g., "9090">
+prometheus.io/scrape: "true"
+----
+
+[id=metadata-metrics-openmetrics]
+== Metadata for Metrics collected using the openmetrics check
+
+If you use the preceding configuration, then the openmetrics check is enabled
+in the agent. 
+
+For more details, see Datadoc documentation on https://docs.datadoghq.com/containers/kubernetes/prometheus/?tab=kubernetesadv1[Kubernetes Prometheus and OpenMetrics metrics collection^].
+
+The Kloudfuse agent installed using the provided values file uses a custom check, `kf_openmetrics`, does not collect metadata by default. You can:
+
+. Configure `kf_openmetrics` to collect metadata by annotating the required sources.
+. Enable the *Autodiscovery agent* for these pods.
++
+See the Datadog documentation section 
+https://docs.datadoghq.com/containers/kubernetes/integrations/?tab=kubernetesadv22[Kubernetes and Integrations^].
+
+. Run the custom check.
+
+[id=kubernetes-environment]
+== Kubernetes environment
+
+To enable metrics metadata collection from a Kubernetes pod, as discussed in Datadog documentation section 
+https://docs.datadoghq.com/containers/kubernetes/integrations/?tab=annotations#configuration[Kubernetes and Integrations: Configuration^], add the following code.
+
+[NOTE]
+====
+You can add this to the helm and each deployment.
+====
+
+[,yaml]
+----
+apiVersion: v1
+kind: Pod
+# (...)
+metadata:
+  name: '<POD_NAME>'
+annotations:
+    ad.datadoghq.com/<CONTAINER_IDENTIFIER>.check_names: '["kf_openmetrics"]'
+    ad.datadoghq.com/<CONTAINER_IDENTIFIER>.init_configs: '[{}]'
+    ad.datadoghq.com/<CONTAINER_IDENTIFIER>.instances: '[ { "openmetrics_endpoint": "<http://%%host%%:%%port%%/metrics>"}
+      ]'
+    # (...)
+spec:
+  containers:
+    - name: '<CONTAINER_IDENTIFIER>'
+# (...)
+----
+
+[id=knight-monitoring]
+== Advance monitoring using Knight
+
+[id=ksm-enable]
+=== Enable kubernetes_state_metric
+
+Kloudfuse's xref:analycs-advanced.adoc[Advanced Analytics] depends on
+https://github.com/kubernetes/kube-state-metrics[kubernetes_state_metrics^]
+(KSM) check; by default, it is not enabled in the agent. 
+
+Ensure that the agent continues to capture these metrics through KSM by adding or updating the `dd-agent` values
+file.
+
+[,yaml]
+----
+datadog:
+  kubeStateMetricsEnabled: true
+  kubeStateMetricsCore:
+    enabled: true
+    ignoreLegacyKSMCheck: false
+----
+
+[id=knight-monitoring-enable]
+=== Enable Knight-based monitoring in Kfuse
+
+. Add the `knightEnabled` logic to the `custom-values.yaml` file.
++
+[,yaml]
+----
+ingester:
+  ...
+  config:
+  knightEnabled: true
+----
+
+. Upgrade the cluster.

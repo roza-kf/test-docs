@@ -1,0 +1,64 @@
+= Metics Roll Up
+:description: Kloudfuse now supports 5 minutes roll up of metrics data, computed directly from the data stream.
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, metrics, metrics roll up, 5m interval
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Kloudfuse now supports 5 minutes roll up of metrics data, computed directly from the data stream. 
+
+[TIP]
+====
+image::2.7.4.svg[Inline]
+This feature is only available in Release 2.7.4 and subsequent versions of Kloudfuse.
+====
+
+Read about our implementation in these sections:
+
+- <<computation,Computation>>
+- <<storage,Storage>>
+- <<retention,Retention>>
+- <<ingester,Ingester>>
+- <<metrics-transformer,Metrics Transformer>>
+- <<decoder,Decoder>>
+- <<uery-service,Query Service>>
+
+[id=computation]
+# Computation 
+A metrics transformer computes the roll up of each metric series from the kafka metrics topic (`topic kf_metrics_topic`) and writes it to the kafka metrics rollup topic (`kf_metrics_rollup_topic`). 
+
+[id=storage]
+#Storage
+A separate new table (`kf_metrics_5m`) in the Pinot database stores the rolled up data. While the raw metrics table (`kf_metrics`) stores a single value column, the schema for `kf_metrics_5m` table stores the *sum*, *count*, *min*, *max*, *counter* (last counter value that accounts for resets within the rollup window), and *first* (first value encounter in the bucket). For histogram metrics, the `le` column stores the collapsed counter values for the histogram buckets, and contains first and counter value for each bucket.
+
+[id=retention]
+# Retention
+The `kf_metrics_5m` table has a different retentian time than the raw metric data; we extended the existing `RetentionConfig` for metrics to specify retention time for the 5 minute roll up. If you do not explicitly specify the data retention policy, it defaults to the retention time of raw data.
+
+[id=ingester]
+# Ingester
+The Ingester computes the expiry, and attaches it to the `TimeSeries` protobuf. The protobuf definition has the additional `expiry_5m` field that the ingester populates.
+
+[id=metrics-transformer]
+# Metrics Transformer
+
+The metrics transformer computes the aggregated values:  *sum*, *count*, *min*, *max*, *counter* (last counter value that accounts for resets within the rollup window), *first* (first value encounter in the bucket), and *first_ts* of each metric series. 
+
+[id=decoder]
+# Decoder
+Decoder
+A new MetricsRollupDecoder reads from `kf_metrics_rollup_topic` and writes to the the `kf_metrics_5m` table.
+
+[id=query-service]
+# Query Service
+The query service automatically selects which table to access for the query.
+
+- If using the roll up feature, the query service routes the query to the correct value column. 
++
+For example, for rate, increase, and changes, the query service uses both *counter* and *first* values.
+
+- To handle mixed data, where some (likely older) data has no corresponding rolled up data, the query service accesses the `kf_metrics_5m`  table for the minimum timestamps.
++
+If the query time range contains the minimum timestamp, the query service splits the query into multiple queries. The older data uses the `kf_metrics` table, while newer data  uses the rolled up table `kf_metrics-5m`. Query service then merges the responses before returning the result.

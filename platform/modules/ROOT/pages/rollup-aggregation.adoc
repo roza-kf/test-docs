@@ -1,0 +1,36 @@
+= Rollup Aggregation in Charts
+:description: It is often necessary to plot all the data in a time interval as a single datapoint. This practice is known as resolution. Thus, we must create rollups that aggregate multiple data points within the time interval.
+:sectanchors: 
+:url-repo:  
+:page-tags: rollup, aggregation, rollup aggregation, resolution, time interval, chart rendering
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+It is often necessary to plot all the data in a time interval as a single datapoint. This practice is known as resolution. Thus, we must create rollups that aggregate multiple data points within the time interval. When working with larger time intervals in Metrics Explorer time series charts, or with metric storage system in general, configurations that include rollups achieve significant storage savings.
+
+Kloudfuse determines the rollup, and then calculates the aggregation. It uses either static dimensions or dynamic tags.
+
+There are two types of rollups, implicit and explicit.
+
+# Implicit Rollup
+
+When the number of metric data points in the selected time interval exceeds the maximum that can be displayed in a metric chart, the default rollup aggregation method is `avg`.
+
+The user can change the default.
+
+# Explicit Rollup
+The user can explicitly configure a specific rollup interval and aggregation method.
+
+# Rollup Aggregation Methods
+Kloudfuse supports the following rollup aggregation methods: avg, sum, min, max, and count.
+
+# &nbsp;
+
+.Additional Resources
+[MORE]
+====
+- xref:rollup-aggregation-size.adoc[Step Size Calculations for Charts]
+
+- xref:known-issues.adoc#rollup-ui[Known Issues]
+====

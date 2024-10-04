@@ -1,0 +1,31 @@
+// id=deepstore-rehydration
+
+As we decommssion old Kloudfuse installations and deploy new ones, segments from the old installation can be loaded into the new installation, if:
+
+. The Deepstore location for the new installation has a different path from the old installation.
+. Pinot servers on the new installation have permissions to read from the old deep store location.
+
+Resolution::
+. Use this https://raw.githubusercontent.com/kloudfuse/customer/main/scripts/get_segment_status.py[script^] to monitor rehydration.
+
+. Point the Pinot controller port to the new location:
++
+[,console]
+----
+kubectl port-forward pinot-controller-0 -n kfuse 9000:9000
+----
+
+. For each table (`kf_metrics`, `kf_logs`, `kf_traces`, `kf_traces_errors`, `kf_events`) run this command:
++
+[,console]
+----
+curl -X POST --fail -H "Content-Type: application/json" -H "TABLE_TYPE:REALTIME" -H "UPLOAD_TYPE:BATCH" -H "DOWNLOAD_URI:<OLD DEEPSTORE PATH>/controller/data/<TABLE NAME>" -v "http://localhost:9000/v2/segments?tableName=<TABLE NAME>&tableType=REALTIME&enableParallelPushProtection=false&allowRefresh=false"
+----
+
+. To prevent data loss, *_do not delete_* the older Deepstore folder. The new Kloudfuse installation downloads the segments from older deeptstore locations, but still has a reference to it.
+
+. Retention on the new cluster *_does not reset_*. Instead, Kloudfuse computes it  from the time when the data was initially ingested into the cluster (older installation). So:
+- If the retention period on the new cluster is set to 1 month
+- If a log line gets ingested into the old cluster on April 7, 2024 for the first time
+- If the segment is subsequently rehydrated into a new cluster installation on May 6, 2024
+- Then Kloudfuse deletes the log line on May 7, 2024, or 1 month from the initial ingestion date of Apr 7th 2024.

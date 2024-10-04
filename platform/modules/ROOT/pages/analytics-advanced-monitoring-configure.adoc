@@ -1,0 +1,18 @@
+= Configure Advance Monitoring and Analytics
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// 
+
+This information is necessary to use xref:analytics-advanced.adoc[Advanced Analytics and Monitoring] in Kloudfuse.
+
+Ensure that the agent/collector has the correct configuration. See xref:datadog-agent.adoc[].
+
+Update your `custom_values.yaml` file to include the following code:
+
+Rerun the xref:install.adoc[installation] command. 

@@ -1,0 +1,20 @@
+= Query Languages
+:description: Kloudfuse uses several query languages: proprietary KfuseQL, GraphQL, PromQL, LogQL, and TraceQL.
+:sectanchors: 
+:url-repo:  
+:page-tags: KfuseQL, Search Query Language, Query Language, GraphQL, PromQL, LogQL, TraceQL.
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Across our language documentation, we consistently use the same syntax.
+
+Required arguments::
+We denote a required argument by wrapping it in angle brackets, `< >`.
+
+Optional arguments::
+We denote an optional argument by wrapping it in square brackets, `[ ]`.
+
+Multiple arguments::
+We use an ellipsis, `...` to denote an argument that has a multiplicity of  `&ge; 1`.
+

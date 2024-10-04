@@ -1,0 +1,21 @@
+// helm-values
+
+We configured the default Kloudfuse helm chart for a single-node cluster install, without a deepstore. It may be difficult to understand what these are.
+
+Resolution::
+
+Run the following command:
+
+[,console]
+----
+helm show values oci://us-east1-docker.pkg.dev/mvp-demo-301906/kfuse-helm/kfuse --version 2.0.1
+----
+
+As your configuration changes, you can add customizations by editing the  `custom_values.yaml` file.
+
+To view your helm values at any time, run the command on your cluster:
+
+[,console]
+----
+helm show values <Your Kloudfuse Installation IP or address>/kfuse-helm/kfuse --version 2.0.1
+----

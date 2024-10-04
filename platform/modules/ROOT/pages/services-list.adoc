@@ -1,0 +1,81 @@
+= Services in Kloudfuse platform
+:description: The Kloudfuse platform uses a number of services to provide observability insigts. 
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse platform, data services, data ingestion, ingester, data transformation, transformer, log parsing, parser, log parser, query service, queries, advanced functions, advanced function manager, log archive, log hydration, archiving service, hydration service, log archiving service, log hydration service, metric roll up, metrics rollup
+:figure-caption!:
+:table-caption!:
+:exmple-caption!:
+
+Ingester service::
+The ingester service accepts and processes all incoming telemetry data in the Kloudfuse observability cluster, from xref:#ingester-agents[agents], xref:#cloud-sources[cloud sources], xref:#serverless[serverless apps], and xref:#sdk[browser sdk].
++
+[#ingester-agents]
+It supports incoming data time series from these 3rd party agents:
++
+* OpenTelemetry (OTEL)
+* Prometheus 
+* Datadog
+* Fluentd
+* Fluentbit
+* Filebeat
++
+[#cloud-sources]
+Through publish/subscription protocols (pub/sub), the ingester accepts data from these cloud soucrces:
++
+* GCP Metrics and Logs
+* AWS Metrics and Logs
++
+[#serverless]
+The ingester processes data from serverless apps in AWS Lambda format through APIs.
++
+[#sdk]
+With the inroduction of Real User Monitoring (RUP), the ingestor processes API calls from the Amazon EventBridge.
+
+////
+// https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/718176257/Logs+Ingester
+https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/323289171/Datadog+logs+agent+and+ingester+exploration
+https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/1072594945/Ingesting+Local+File+Custom+Logs+to+DataDog
+https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/811433985/Ingestion+parser+perf
+////
+
+Advanced functions service::
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/712671260/Advanced+functions+service
+
+Alerting service::
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/696221701/Alerting+-+Our+own+alerting+service
+
+Archive writer service::
+Kloudfuse adapted the https://opensource.datadoghq.com/projects/vector/[Vector service from Datadog^] (an open source project) to write the log archives to the designated archive location.
++
+See details about xref:archive-hydration.adoc[Archive and Hydration].
++
+For specific details about Vector, see https://vector.dev/docs/[Vector documentation^].
+
+Grafana graph query service::
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/830701569/Grafana+Service+graphs+queries
+
+Logs parser::
+
+////
+https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/718274565/Logs+Parser
+https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/793247749/Logs+parsing
+////
+
+Logs query service::
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/718864420/Logs+query+service
+
+Metadata discovery service::
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/517341209/Metadata+Discovery+Service
+
+Metrics transformer service::
+
+Query service::
+
+//https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/241139767/Query+Service
+

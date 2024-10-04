@@ -1,0 +1,112 @@
+= Known Issues
+:description: We are aware of some issues you may encounter in Kloudfuse and their causes.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+:stem:
+
+[id=install]
+# Installation
+
+[id=registry-login-failre]
+## helm registry login failure
+
+include::known-issues/registry-login-failre.adoc[]
+
+[id=helm-values]
+## Review helm values
+
+include::known-issues/helm-values.adoc[]
+
+[id=networking]
+# Networking
+
+[id=unreachable]
+## Kfuse cannot be reached from an external host
+
+include::known-issues/unreachable.adoc[]
+
+[id=packet-drop]
+## Ingress-NGINX drops packet
+
+include::known-issues/packet-drop.adoc[]
+
+[id=kafka]
+# Kafka
+
+[id=kafka-increase]
+## Increase Kafka partition replication factor
+
+include::known-issues/kafka-increase.adoc[]
+
+[id=pinot]
+# Pinot
+
+[id=pods-crash-loop]
+## Pinot server realtime pods in crash loop back off
+
+include::known-issues/pods-crash-loop.adoc[]
+
+[id=deepstore-access]
+## Pinot Deepstore access issues
+
+include::known-issues/deepstore-access.adoc[]
+
+[id=deepstore-rehydration]
+## Rehydration of segments from Deepstore
+
+include::known-issues/deepstore-rehydration.adoc[]
+
+[id=pinot-controller]
+## Getting ideal state and external view for segments from Pinot controller
+
+include::known-issues/pinot-controller.adoc[]
+
+[id=realtime-usage-increase]
+## Realtime usage continously increasing 
+
+include::known-issues/realtime-usage-increase.adoc[]
+
+[id=storage]
+# Storage
+
+[id=increase-pvc]
+## Increase existing PVC size
+
+include::known-issues/increase-pvc.adoc[] 
+
+[id=resize-pvc-azure]
+## Resize PVC on Azure
+include::known-issues/resize-pvc-azure.adoc[]
+
+[id=fluent-bit]
+# Fluent-Bit Agent
+
+[id=fluent-bit-duplicate-logs]
+## Duplicate logs in Kloudfuse stack
+
+include::known-issues/fluent-bit-duplicate-logs.adoc[]
+
+[id=datadog]
+# Datadog Agent
+
+[id=datadog-label]
+## Kube_cluster_name label does not show in Kfuse stack
+
+include::known-issues/datadog-label.adoc[]
+
+[id=datadog-access-denied]
+## Access denied when creating and alert or contact point
+
+include::known-issues/datadog-access-denied.adoc[]
+
+[id=ui]
+# UI
+
+[id=rollup-ui]
+## Step size differences in charts between Kloudfuse and Grafana UIs
+
+include::known-issues/rollup-ui.adoc[]

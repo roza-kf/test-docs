@@ -1,0 +1,25 @@
+= RBAC: Using the Admin Tab
+:description: Use the Admin tab to perform the various RBAC workflows and configurations through the UI: User Management, Folder Management, Group Management, Policy Management, and Policy Configuration Management
+:sectanchors: 
+:url-repo:  
+:page-tags: RBAC, Role-Based Access Control, permissions, roles, users, groups, security, access, folders, Admin tab
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[TIP]
+====
+image::2.7.3.svg[Inline]
+This feature is only available in Release 2.7.3 and subsequent versions of Kloudfuse.
+====
+
+Use the Admin tab to perform the various RBAC workflows and configurations through the UI:
+
+* xref:user-management.adoc[User Management]
+* xref:folder-managemnt.adoc[Folder Management]
+* xref:group-management.adoc[Group Management]
+* xref:policy-management.adoc[Policy Management]
+* xref:policy-configuration-management.adoc[Policy Configuration Management]
+
+.The Admin Tab
+image::admin-tab.png[The Admin tab]

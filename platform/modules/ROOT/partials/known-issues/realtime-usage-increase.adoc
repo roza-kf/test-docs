@@ -1,0 +1,23 @@
+// id=realtime-usage-increase
+
+The `pinot-server-realtime` persistent volume usage keeps increasing when there is a disconnect in segment movement.
+
+This has been partially fixed in Kloudfuse Release 2.6.5.
+
+Two methods to verify the behaviour:
+
+- In Release 2.6.5 and later versions, Kloudfuse issues an automatic alert when PVC usage exceeds 40%.
+
+- Navigate to *Kloudfuse Overview → System dashboards*. In the *PV Used Space* panel, check the graph for `pinot-server-realtime`.
+
+Resolution::
+. Restart the `pinot-realtime` and `pinot-offline` servers:
++
+[,console]
+----
+kubectl rollout restart sts pinot-server-offline pinot-server-realtime
+----
+
+. If PV usage already reached 100% and cannot be restarted gracefully, you must increase the PVC size of `pinot-realtime` PVCs by approximately 10% to accommodate the increased requirements, and then restart the `pinot-server offline` and `pinot-server realtime`.
++ 
+See xref:known-issues.adoc#increase-pvc[Increase existing PVC size] and xref:known-issues.adoc#resize-pvc-azure[Resize PVC on Azure].

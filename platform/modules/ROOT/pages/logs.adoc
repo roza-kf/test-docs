@@ -1,0 +1,10 @@
+= Logs
+:description: Logs
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, logs
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+include::partial$logs.adoc[]

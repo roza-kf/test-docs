@@ -1,0 +1,45 @@
+= Use cases
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+# Control observability costs
+////
+https://chronosphere.io/solutions/#solutions-by-use-case
+
+Cloud native environments produce massive amounts of telemetry data. Developers need this data to effectively operate and troubleshoot systems, but it quickly leads to observability costs spiraling out of control.
+
+With Chronosphere, you still collect all the same data, but it’s aggregated and transformed into actionable insight that is usable for developers, while also being highly cost efficient. The result is greater predictability, increased accountability, and significant cost savings.
+
+////
+
+# Accelerate MTTx
+////
+https://chronosphere.io/solutions/#solutions-by-use-case
+
+When customer-facing issues arise, your developers need the best tools to solve these issues, fast. Chronosphere rapidly orients developers to the problem at hand with context-rich alerts and seamless linking of data types for faster time to triage. With a solution that is accessible for all levels of developers, you will no longer have your most senior resources pulled into every incident response.
+
+The results? When you can scale reliably and meet customer demand, you’ll see increased revenue and less customer churn.
+////
+
+# Boost Observability Uptime and Performance
+////
+https://chronosphere.io/solutions/#solutions-by-use-case
+
+When your observability solution is unreliable, the entire organization suffers. Developers can’t ship code, or worse, fly blind during an outage. They spend longer on troubleshooting, which means they are slower to deliver new features, which in turn frustrates customers and puts revenue at risk.
+
+With Chronosphere, you gain an observability platform that is reliable, scalable, and performant, so engineers spend less time in the weeds and more time innovating
+////
+
+# Scale Open Source Tools
+////
+https://chronosphere.io/solutions/#solutions-by-use-case
+
+While many organizations begin their cloud native observability journey with open source tools like Prometheus or Jaeger, they quickly run into major hurdles. The two big challenges that companies face when running their own open source observability in-house is the significant management overhead and tooling that is unreliable and slow.
+
+With Chronosphere, you get the best of both worlds: a fully open source compatible solution that relieves the management overview and delivers best in class availability and performance. Win-win.
+////

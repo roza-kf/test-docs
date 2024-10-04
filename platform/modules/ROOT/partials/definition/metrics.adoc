@@ -1,0 +1,4 @@
+Metrics::
+Metrics are numerical measurements that provide an insight into a system’s performance. Use metrics, such as error rate and CPU% use, in mathematical modeling and forecasting to represent specific data structures.
++
+Monitoring metrics as part of your observability strategy helps when constructing dashboards that display past trends across multiple services, facilitating extended data retention and simplifying queries. 

@@ -1,0 +1,8 @@
+= Integration with Workloads Deployed on Docker Containers using Docker-Compose
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:

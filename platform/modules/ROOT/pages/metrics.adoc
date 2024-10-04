@@ -1,0 +1,25 @@
+= Metrics
+:description: Metrics
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, metrics
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Kloudfuse Platform supports high cardinality xref:glossary.adoc#metrics[metrics] from hundreds of sources, including infrastructure (node cpu, memory, disk, and so on), Kubernetes, and services like Kafka, Redis, MongoDB, Postgres, MySQL, and many more.
+
+Kloudfuse has a native integration with popular cloud platforms AWS, GCP, and Azure. It ingests high cardinality metrics from applications at low cost. See xref:metrics-source-integration.adoc[Metric source integration].
+
+The Kloudfuse's built-in Grafana server enables you to explore metrics through the PromQL interface; alternatively, you can configure it as a data source in an existing external Grafana installation. See xref:metrics-grafana.adoc[Grafana Metrics].
+
+We built Kloudfuse's native UI for exploring your metrics. We designed it for users who prefer a simpler interface that enables you to explore the metrics and provides many functions to model modern DevOps patterns.
+
+To access the Metrics UI, click the **Metrics** tab in the UI header. Our metrics interface offers three different patterns for exploring data:
+
+xref:metrics-explorer.adoc[Metrics Explorer]::
+Enables the user to perform __ad-hoc__ analysis of any metric by charting the time series data for a selected range of time and dimensions.
+xref:metrics-summary.adoc[Metrics Summary]::
+Provides a concise view of all metrics ingested by the system, along with all tags and their possible values within the selected time range.
+xref:metrics-cardinality-analytics.adoc[Metrics Cardinality Analytics]::
+Enables you to rapidly analyze high cardinality fields and identify specific issues and their causes, leading to effective observability.

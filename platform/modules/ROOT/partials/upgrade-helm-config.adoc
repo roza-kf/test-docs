@@ -1,0 +1,8 @@
+// upgrade-helm-config
+
+. Upgrade the helm using the updated `custom_values.yaml` file:
++
+[,console]
+----
+helm upgrade --install -n kfuse kfuse <Your Kloudfuse Installation IP or address>kfuse-helm/kfuse --version 2.7.1  -f custom_values.yaml
+----

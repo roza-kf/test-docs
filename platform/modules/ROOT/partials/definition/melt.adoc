@@ -1,0 +1,1 @@
+MELT:: An acronym for Metrics, Events, Logs, and Traces, MELT is a framework that provides insights into system performance, health, and behavior. MELT can help teams quickly identify, diagnose, and resolve issues, while optimizing system performance.

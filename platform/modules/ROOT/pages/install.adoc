@@ -1,0 +1,95 @@
+= Install Kloudfuse on helm
+:description: Kloudfuse install adheres to standard helm best practices. 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/724238341/Installation#Installation
+
+Kloudfuse install adheres to standard helm best practices. 
+
+After ensuring that the xref:installation.adoc#prerequisites[prerequistes] are complete, proceed with the followng steps:
+
+[%interactive]
+* [ ] xref:#helm-registry[Log into Kloudfuse helm registry]
+* [ ] xref:#namespace[Create the `kfuse` namespac]
+* [ ] xref:#secret[Create a secret for docker images]
+* [ ] xref:#yaml[Create the `custom_values.yaml` file]
+* [ ] xref:#charts[Install Kfuse charts]
+
+[#helm-registry]
+== Log into Kloudfuse helm registry
+
+Using the `token.json` you downloaded with your free trial request, run the following command:
+
+[,console]
+----
+cat token.json | helm registry login -u _json_key --password-stdin https://us-east1-docker.pkg.dev
+----
+
+[INFORMATION]
+====
+In case of failure in this step, see xref:known-issues.adoc#registry-login-failre[Registry login failure].
+====
+
+[#namespace]
+== Create the `kfuse` namespace
+
+Create a new namespace `kfuse` to Install Kloudfuse.
+
+[,console]
+----
+kubectl create ns kfuse
+kubectl config set-context --current --namespace=kfuse
+----
+
+[#secret]
+== Create a secret for docker images
+
+Create a secret for helm to pull the required docker images:
+
+[,console]
+----
+kubectl create secret docker-registry kfuse-image-pull-credentials \
+        --namespace='kfuse' --docker-server 'us.gcr.io' --docker-username _json_key \
+        --docker-email 'container-registry@mvp-demo-301906.iam.gserviceaccount.com' \
+        --docker-password=''"$(cat token.json)"''
+----
+
+[#yaml]
+== Create and modify the `custom_values.yaml` file
+
+. Create a `custom_values.yaml` file; if we shared a yaml file with you directly, then modify it as necessary:
+
+. Specify the required `orgId` value, typically the name of your company, to the `custom_values.yaml` file:
++
+[,yaml]
+----
+global:
+  orgId: <YOUR COMPANY NAME>
+----
+  
+. Specify the required `cloudProvider` value. Valid values are `aws`,  `gcp`, and `azure`.
++
+[,yaml]
+----
+global:
+  orgId: < ONE OF aws, gcp, or azure>
+----
+
+. [Optional] Add a section in to `custom_values.yaml` to specify to your cloud provider.
++
+See xref:install-ingress.adoc[Configure cloud-specific helm values].
+
+[#charts]
+== Install Kfuse charts
+
+To install the Kfuse chart service, run the following command:
+
+[,console]
+----
+helm upgrade --install -n kfuse kfuse oci://us-east1-docker.pkg.dev/mvp-demo-301906/kfuse-helm/kfuse --version 2.7.4  -f custom_values.yaml
+----

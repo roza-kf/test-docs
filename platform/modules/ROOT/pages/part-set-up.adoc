@@ -1,0 +1,9 @@
+= Set up
+:description: Set up Kloudfuse
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, set up, setup, install, installation, configure, configuration, upgrade, maintain, migrate, trouble, trouble-shooting, troubleshooting
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+

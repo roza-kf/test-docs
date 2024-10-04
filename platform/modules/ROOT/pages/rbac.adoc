@@ -1,0 +1,171 @@
+= Role-Based Access Control 
+:description: RBAC is an effective and scalable approach to managing user access within a system. By defining roles with specific permissions and assigning these roles to users, organizations can enhance security, simplify access management, and ensure that users only have the access they need for their job functions.
+:sectanchors: 
+:url-repo:  
+:page-tags: RBAC, Role-Based Access Control, permissions, roles, users, groups, security, access, folders
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[TIP]
+
+====
+image::2.7.3.svg[Inline]
+This feature is only available in Release 2.7.3, and subsequent versions of Kloudfuse.
+====
+
+RBAC simplifies the management of permissions by associating permissions with roles rather than with individual users. Users are assigned roles based on their job responsibilities, and these roles determine what actions they can perform and what resources they can access. This approach makes it easier to manage permissions, enforce policies, and maintain security as organizational roles and responsibilities change.
+
+RBAC is an effective and scalable approach to managing user access within a system. By defining roles with specific permissions and assigning these roles to users, organizations can enhance security, simplify access management, and ensure that users only have the access they need for their job functions.
+
+Explore further Kloudfuse documentation on RBAC:
+
+- xref:rbac-admin-tab.adoc[Using the Admin Tab]
++
+* xref:user-management.adoc[User Management]
+* xref:folder-managemnt.adoc[Folder Management]
+* xref:group-management.adoc[Group Management]
+* xref:policy-management.adoc[Policy Management]
+* xref:policy-configuration-management.adoc[Policy Configuration Management]
+- xref:rbac-configuration.adoc[RBAC Configuration]
+
+# Pillars of Role-Based Access Control
+
+Kloudfuse recognizes and supports these primary pillars of RBAC:
+
+## Roles
+
+Definition::
+A role is a collection of permissions that define what actions a user can perform within a system.
+
+Examples::
+Common roles include Administrator, Editor, and Viewer. Each role has a specific set of permissions associated with it.
+
+Specifically, the roles in the Kloudfuse platform have the following capabilities and associated permissions:
+
+[%header,%footer,.stripes-even,cols="1,2a,2a,2a,2a"]  
+|===
+|Domain
+|User Management
+|Kloudfuse R/W
+|^*^Grafana R/W
+|Data Acccess R
+
+|*Capability*
+|
+- Add Admin user
+- Configure user
+|
+- ASM (Alerts)
+- SLO
+- Save Log Queries
+|
+- Alerts
+- Dashboards
+- Folders
+- Alert Manager
+|
+- Logs Explorer
+- Metrics Explorer
+- APM Explorer
+- List Alerts
+
+|*Admin*
+^|image::yes.svg[Inline]
+^|image::yes.svg[Inline]
+^|image::yes.svg[Inline]
+^|image::yes.svg[Inline]
+
+
+|*Editor*
+^|image::no.svg[Inline]
+^|image::yes.svg[Inline]
+^|image::yes.svg[Inline]
+^|image::yes-mark.svg[Inline]
+
+
+|*Viewer*
+^|image::no.svg[Inline]
+^|image::no.svg[Inline]
+^|image::no.svg[Inline]
+^|image::yes.svg[Inline]
+
+5+|^*^ Grafana is only visible to users with Admin role
+|===
+
+## Permissons
+
+Definition::
+Permissions are the rights or privileges granted to perform certain actions or access specific resources.
+
+Examples::
+Permissions might include read, write, delete, or execute rights on dashboards and alerts, or access to specific applications and data.
+
+## Users
+
+Definition::
+Users are individuals who interact with the system. Each user is assigned a role based on their job function and needs.
+
+Examples::
+An Admin or SRE may be assigned roles that grant access to a specific namespace, folder, dashboards, or alerts.
+
+## Role Assignments
+
+Definition::
+Role assignments involve linking users to specific roles. This mapping determines what roles a user holds and, consequently, what permissions they have.
+
+Examples::
+Assigning a user the role of "Administrator" grants them access to all administrative functions, whereas assigning them the role of "Viewer" restricts them to only seeing traces.
+
+# Other Important Concepts in RBAC
+
+In addition to the Pillars, Kloudfuse supports the following concepts in RBAC:
+
+## Separation of Duties (SoD)
+Definition::
+SoD is a principle to ensure that no single role has enough permissions to misuse the system or commit fraud. It helps in preventing conflicts of interest.
+
+Examples::
+The role responsible for approving payments should not be the same role that processes payments.
+
+## Least Privilege
+Definition::
+This principle involves granting users the minimum level of access necessary to perform their job functions, reducing the risk of accidental or malicious misuse of resources.
+
+Examples::
+A user who only needs to view reports should not have permission to edit or delete them.
+
+## Access Control Lists (ACLs) vs. RBAC
+
+ACLs::
+Define permissions for specific resources, specifying which users or roles can access each resource and what actions they can perform.
+
+RBAC::
+Groups permissions into roles and assigns these roles to users, making it easier to manage and audit access.
+
+# Benefits of RBAC
+Using RBAC in your suite of observability tools provides significant benefits:
+
+## Simplified Management
+By grouping permissions into roles, RBAC simplifies the process of managing and auditing access controls, especially in large organizations.
+
+## Enhanced Security
+Ensures that users only have access to the resources and functions necessary for their roles, reducing the risk of unauthorized access.
+
+## Compliance
+Helps organizations meet regulatory requirements and standards by providing clear role-based access policies and audit trails.
+
+# RBAC Use Cases
+Kloudfuse enables your organization to realize these important functions:
+
+## Allow certain users to only read level access for all objects
+This can be set at the level of a user or group, by assigning the Viewer role.
+
+## Allow certain users read-write access to all objects
+This can be set at the level of the user or group, by assigning Editor or Admin role.
+
+## Allow users access to any objects they create
+This is on by default; as a user creates an object, Kloudfuse automatically grants that user full access to that object, regardless of their role. All other users get access to the new object based on their assigned roles.
+
+## Allow administrators to create policies
+Policies are a set of filters (key, operation and value) for each user group. If a user belongs to multiple groups, they get access to all assets as a union; the filters combine in an implicit OR operation to determine which object data  the user can access.

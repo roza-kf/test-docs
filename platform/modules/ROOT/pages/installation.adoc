@@ -1,0 +1,56 @@
+= Installation
+:description: We built Kloudfuse to run in a Kubernetes cluster on GCP, AWS, or Azure cloud.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/724238341/Installation#Installation
+
+We built Kloudfuse to run in a Kubernetes cluster on GCP, AWS, or Azure cloud.
+
+[#prerequisites]
+# Prerequisites
+
+To install the Kloudfuse stack, you must have the following:
+
+[#bassic-config]
+.Basic Configuration
+[%interactive]
+* [ ] Machine with at least 8vCPU, and 64GB memory. 
+
+* [ ] A Kubernetes cluster
++ 
+Can be separate or shared with the application
+
+* [ ] Persistent volumes
++
+Installation create these; the install account must have the necessary permissions
+
+* [ ] Helm version 3.8.1 or later
+
+* [ ] Kubectl
+
+For advanced and production-grade customizations, see the relevant prerequisites. See xref:migration-part.adoc[Migration Scenarios and Integrations] to select installatio options that match your business requirements.
+
+[#steps]
+# Installation steps
+
+* [ ] xref:install.adoc[Install Kloudfuse stack on helm]
+
+* [ ] xref:install-ui.adoc[Access Kloudfuse UI]
+
+* [ ] xref:install-add-users.adoc[Add users]
+
+* [ ] xref:install-password.adoc[Chaange the default password]
+
+* [ ] xref:sso.adoc[Configure authentication]
+
+* [ ] xref:install.adoc[Run kloudfuse stack without an external load balancer]
+
+* [ ] xref:uninstall.adoc[Uninstall Kloudfuse]
+
+
+

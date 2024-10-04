@@ -1,0 +1,12 @@
+Telemetry::
+Telemetry data is automatically collected and transmitted from remote or inaccessible sources to a centralized location for monitoring and analysis. Metrics, events, logs, and traces each provide crucial insights into the application’s performance, latency, throughput, and resource utilization.
++
+We can use telemetry data to observe system performance, recognize potential problems, detect irregularities, and investigate issues.
++
+We can extract telemetry data from:
++
+- Application logs
+- System logs
+- Network traffic
+- Third-party services
+- APIs

@@ -1,0 +1,26 @@
+= Add users
+:description: After installing Kloudfuse, add users and manage their credentails.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+After installing Kloudfuse, add users and manage their credentails.
+
+Follow these steps:
+
+. Connect to your Kloudfuse cluster.
+
+. Drop the content of the htpasswd `users.txt` file; do not run the `rm` command if the file does not exist:
++
+[,console]
+----
+rm users.txt
+kubectl get secret -n kfuse kfuse-auth-users -o json | jq -r '.data."users.txt"' | base64 -d > users.txt
+----
+
+. To change the user's password, remove the user's entry from `users.txt` file.
+
+. 

@@ -1,0 +1,13 @@
+= Compliance
+:decription:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+The Kloudfuse platform is compliant with SOC2 TYPE2 regulations. 
+
+The Kloudfuse team is committed to the security of your data by embedding security into our system design and processes.
+

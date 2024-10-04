@@ -1,0 +1,3 @@
+= Configure Object Store for Pinot	
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EX/pages/724664352/Configure+GCP+AWS+Azure+Object+Store+for+Pinot

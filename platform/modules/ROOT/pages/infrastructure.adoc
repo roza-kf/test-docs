@@ -1,0 +1,35 @@
+= Infrastructure
+:description: With Kloudfuse, you can easily monitor the performance and capacity of your entire infrastructure.
+:sectanchors: 
+:url-repo:  
+:page-tags: Kloudfuse, observability, infrastructure
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+
+With Kloudfuse, you can easily monitor the performance and capacity of your entire infrastructure.
+
+Click the *Infrastructure* tab, and select the option that is relevant to your installation:
+
+Serverless::
+Explore the performance of data access calls by:
++
+Function name::: __
+Invocations::: ___
+Duration::: ___
+Errors::: ___
+
+Kubernetes::
+Explore the performance of your Kubernets infrastructure by:
++
+Pod::: ___
+Status::: ___
+Cluster::: ___
+Namespace::: ___
+Age::: ___
+Ready::: ___
+Restarts::: ___
+% CPU Usage::: ___
+% Mem Usage::: ___
+

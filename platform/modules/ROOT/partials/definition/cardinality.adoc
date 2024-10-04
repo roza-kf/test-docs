@@ -1,0 +1,14 @@
+Cardinality::
+Cardinality of a data attribute is the number of possible distinct values, or uniqueness, it can have.
++
+Cardinality is important for the following reasons:
++
+Data integrity::: It defines clear relationships between tables and ensures that data is accurately linked and accessible.
+
+Efficient queries::: Understanding cardinality optimizes query execution plans. Well-defined relationships and data distribution leads to faster information retrieval and improved performance.
+
+Database design and normalization::: Cardinality is crucial in designing databases and normalizing data. It helps reduce redundancy and optimize storage for effective organization.
+
+Data analysis and reporting::: For businesses, cardinality enhances data analysis and reporting. It establishes meaningful relationships that provide insights into customer behavior and operational efficiency.
++
+See xref:high-cardinality.adoc[High cardinality] and xref:low-cardinality.adoc[Low cardinality]

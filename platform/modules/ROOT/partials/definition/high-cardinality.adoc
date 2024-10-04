@@ -1,0 +1,4 @@
+High cardinality::
+High cardinality is a condition when individual attributes within a dataset have a large number of unique values, compared to the total number of entries. We also refer to high cardinality when *_combinations_* of dimensions lead to a large number of unique permutations.
++
+For example, an _Email address_ column in a typical `employee` table naturally has high cardinality because each person has a unique email address.

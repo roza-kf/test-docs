@@ -1,0 +1,14 @@
+// id=datadog-label
+
+The `Kube_cluster_name` label does not show in Kloudfuse stack when MELT data ingested from Datadog agent is missing the `kube_cluster_name` label.
+
+A known issue in the Datadog agent cluster name detection requires that the cluster agent be up. If the dd-agent starts before the cluster agent, it fails to detect the cluster name. See Datadog https://github.com/DataDog/datadog-agent/issues/24406[Issue #24406^].
+
+Resolution::
+
+Perform a rollout restart of the Datadog agent daemonset:
++
+[,console]
+----
+kubectl rollout restart daemonset datadog-agent
+----

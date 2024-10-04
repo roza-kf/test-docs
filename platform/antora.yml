@@ -1,0 +1,6 @@
+name: platform
+title: Kloudfuse
+version: ‘2.8’
+display_version: ‘Kloudfuse 2.8’
+nav:
+- modules/ROOT/nav.adoc

@@ -1,0 +1,198 @@
+= Manage Groups
+:description: This section discusses topics related to managing groups of users in Kloudfuse.
+:sectanchors: 
+:url-repo:  
+:page-tags: RBAC, Role-Based Access Control, permissions, groups, user groups, security, data access, Admin tab
+:figure-caption!:
+:table-caption!:
+:exmple-caption!:
+
+[TIP]
+====
+image::2.7.3.svg[Inline]
+This feature is only available in Release 2.7.3, and subsequent versions of Kloudfuse.
+====
+
+This section discusses topics related to managing groups of users in Kloudfuse.
+
+Groups must have unique names.
+
+Open image-20240822-211224.png
+image-20240822-211224.png
+Group Management interface
+To manage groups, follow these steps.
+
+Click the Admin tab.
+
+Select Group Management from the menu.
+
+The Group Management interface appears. It contains the following:
+
+Search bar to locate specific groups
+
+Add New Group button
+
+List of existing groups, including the group Name, Email, and the number of Members.
+
+Proceed to make changes, as described in Find a Group, Create a New Group, Assign Group Members, Change a Member’s Permissions, Update Group Email, and Delete a Group.
+
+Find a Group
+In large organizations, it may be hard to find an existing group. 
+
+Kloudfuse enables easy find through our Search function.
+
+In Group Management, click the Search bar.
+
+Start typing the key word, and Kloudfuse automatically filters the list of potential matches.
+Here, we are looking the group we created in Create a New Group, favorite_people.
+
+When you find the group you plan to change, hover over the Members field, and select the Edit (pencil) icon to start making the planned changes.
+
+Open image-20240822-222725.png
+image-20240822-222725.png
+Searching for a group name
+Create a New Group
+Admin users can create new groups.
+
+To create a new group, follow these steps:
+
+Click the Add New Group button.
+
+The New Group interface appears.
+
+
+Open image-20240822-213024.png
+image-20240822-213024.png
+New Group interface
+Create a new group by specifying these fields:
+
+Name
+Enter the name of the new group.
+
+Email
+Enter the email associated with the group.
+
+Click Create.
+Here, we created a new group with name favorite_people, and email heros
+
+Open image-20240822-213934.png
+image-20240822-213934.png
+Creating a new group
+ 
+
+You should see a notification that Kloudfuse successfully created the new group.
+
+The New Group detail interface appears.
+
+Open image-20240822-214258.png
+image-20240822-214258.png
+Group Management detail for a newly created group
+ You can assign group members and their permissions, update the group email, or exist.
+
+Assign Group Members
+Group members can have one of two roles within the group, an Admin or a Member:
+
+Admin
+This member can manage the group.
+
+Member
+This member cannot change group parameters or permissions of other members.
+
+To assign members to a group, follow these steps:
+
+Click the Add Member button in the Group Management detail interface for the group you plan to change. 
+This could be a new group that you just created, or a group that existed for some time.
+
+The Members section expands so you can select or find an existing user, assign their role withing the group, and review their permissions.
+
+Open image-20240822-215152.png
+image-20240822-215152.png
+Adding user to group
+To select a user from the User menu, click the down-arrow, and click on a user in the list. 
+Alternatively, search for the user by username, or search …
+You can change the role within the group before adding the user. By default, all users have Member group role; you can change it to Admin.
+Here, we add user7 as Member.
+
+
+Open image-20240822-215932.png
+image-20240822-215932.png
+Choosing users to add to group, and assign group role
+Click Save.
+
+Kloudfuse confirms that you successfully added a new member to the group, and updates the list of members.
+
+
+Open image-20240822-220453.png
+image-20240822-220453.png
+First user added to the group
+ 
+
+Proceed to add more users to the group.
+Notice that the number in the Members field increases with each new member of the group.
+
+Open image-20240823-163416.png
+image-20240823-163416.png
+Membership numbers increases
+ 
+
+Change a Member’s Permission
+ By default, each new person that you add to a group has a Member permission level. You can easily change the permission to Admin, or change an Admin to Member.
+
+To change the Permission of a group member, follow these steps:
+
+Select the group where you want to make a change.
+If you are struggling to locate the correct group, see Find a Group.
+
+In the Members section of the Group Management detail interface of the group, click the Permission field, and select a different permission.
+Here, we change the permission for user5 from Member to Admin.
+
+
+Open image-20240822-223629.png
+image-20240822-223629.png
+Changing a group member’s permission
+ 
+
+Kloudfuse notifies you that the permission is successfully updated.
+
+The Members section of the Group Management detail interface shows the changed permission.
+Here, user5 is now an Admin.
+
+
+Open image-20240822-224306.png
+image-20240822-224306.png
+Group member with new permission, changed from Member to Admin
+Update Group Email 
+To change the Email of an existing group, follow these steps:
+
+Select the group where you want to make a change.
+If you are struggling to locate the correct group, see Find a Group.
+
+In the Settings section of the Group Management detail interface of the group, click the Email field, and enter a new email.
+Here, we change the email for group favorite_people from heroes@kloudfuse.com to favorites@kloudfuse.com.
+
+Open image-20240822-230153.png
+image-20240822-230153.png
+Delete a Group
+As organizational needs change, we recommend that you delete groups that no longer serve a business need.
+
+To delete a group, follow these steps:
+
+Hover your pointer over the Members field of the group you plan to delete from the system.
+
+When the Delete (trashcan) icon appears, click it.
+Here, we are deleting the group test2.
+
+
+Open image-20240822-225003.png
+image-20240822-225003.png
+Delete a group
+Kloudfuse prompts you to confirm deleting the group.
+You can click Delete to confirm, or Cancel to stop deleting the group.
+
+
+Open image-20240822-225407.png
+image-20240822-225407.png
+Confirm or cancel deleting the group
+You should see a notification that Kloudfuse deleted the group successfully.
+
+The Group Management interface no longer lists the group test2. 

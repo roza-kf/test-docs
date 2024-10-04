@@ -1,0 +1,14 @@
+= Telemetry from Kloudfuse stack
+:description: We monitor the performance of your Kloudfuse stack to help resolve issues.
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+The standard Kloudfuse install sends its own telemetry data to itself, and also to the Kloudfuse Observer. This is how our team monitors the health of your installed Kloudfuse stack, and assists to resolve issues quickly and effectively.
+
+For assistance, mailto:support@kloudfuse.com[contact us,"How healthy is my Kloudfuse stack?","Please help me understand my system performance.",role=email].
+
+If you do not want to share your telemetry data with us, request that we mailto:support@kloudfuse.com[disable it,"Request to disable sharing of telemetry data","Please disable telemetry forwarding to Kloudfuse Observer.&#13;My cluster IP/Address is:  ",role=email].

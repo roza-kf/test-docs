@@ -1,0 +1,93 @@
+= Advanced functions
+:description: Find out about advanced functions in Kloudfuse:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+Kloudfuse supports the following advanced functions:
+
+* xref:#rolling-quantile[Rolling quantile]
+* xref:#sarima[Sarima]
+* xref:#seasonal-decompose[Seasonal decompose]
+* xref:#rrcf[Robust Random Cut Forest (RRCF)]
+
+[id=rolling-quantile]
+== Rolling quantile
+
+To calculate the rolling quantile, we currently utilize the "quantile_over_time" function directly from the Prometheus engine. To determine the upper and lower bounds, we make adjustments using standard deviations. Instead of computing the standard deviation over the entire time range, we compute it over a specific window of past data. This approach is taken because calculating deviations using future data is not compliant with promql. There are two methods for calculating standard deviation. One approach involves computing it on the original series, while the other involves calculating deviations based on the predicted bands. In our current implementation, we calculate the deviation over the original series because the standard deviations of the predicted bands would be extremely close to zero. This is because quantiles are generally stable metrics. We need to experiment with option 2.
+
+== Option 1 (current)
+[,python]
+----
+#Lower Band
+lower = avg_over_time((quantile_over_time(0.16, $Query[5m:])-$Bound*stddev_over_time($Query[5m:]))[5m:])
+#Upper Band
+upper = avg_over_time((quantile_over_time(0.84, $Query[5m:])+$Bound*stddev_over_time($Query[5m:]))[5m:])
+----
+
+== Option 2
+
+[,python]
+----
+#Lower Band
+lower = avg_over_time((quantile_over_time(0.16, $Query[5m:])+bound_value*stddev_over_time(quantile_over_time(0.16, $Query[5m:])[5m:]))[5m:])
+#Upper Band
+upper = avg_over_time((quantile_over_time(0.84, $Query[5m:])+bound_value*stddev_over_time(quantile_over_time(0.84, $Query[5m:])[5m:]))[5m:])
+----
+
+[id=sarima]
+== Sarima
+
+Without accounting for seasonality, we utilize three parameters: p, q, and d. The p and q parameters represent the number of historical points we consider for auto-regression (AR) and moving averages (MA) respectively. Therefore, we require the maximum of p and q historical points to make predictions. Additionally, we have the d parameter, which signifies that we operate on the differences between consecutive points rather than the raw points. We apply this differencing d number of times. Ultimately, this means that we require a max(p,q)+d historical points to make a prediction.
+
+If we consider seasonality, there would be an additional set of four parameters: sp, sq, sd, and sm. The interpretations of sp, sq, and sd are quite similar to p, q, and d respectively, with the key difference being that they are lagged by sm time stamps. In essence, for example, if sp = 2, the value at time t would depend on the value at t-sm and t-2sm. So we need (max(sp, sq)+sd)*smhistorical points to make a prediction.
+
+Based on my understanding, we receive one point for each step size, which means we need to go ((max(sp, sq) + sd)*sm)* step size units of time before the query start time with seasonality. If sm=0 we need (max(p,q)+d)*step size  units of time.
+
+[id=seasonal-decompose]
+== Seasonal Decompose
+
+To calculate the prediction bounds, we can explore an alternative approach instead of adding the quantile of residuals to the trend and seasonal components after applying seasonal decomposition. One possible method is to refer to the STL Decomposition.ipynb  notebook, where we can investigate the option of adding the mean and the standard deviations of the residuals into the trend and seasonal components.
+
+[,python]
+----
+#Lower Band
+lower = avg_over_time((mean_over_time(Residuals[5m:])-$Bound*stddev_over_time(Residuals[5m:]))[5m:]) + Trend + Seasonal Component
+#Upper Band
+upper = avg_over_time((mean_over_time(Residuals[5m:])+$Bound*stddev_over_time(Residuals[5m:]))[5m:]) + Trend + Seasonal Component
+----
+
+[id=rrcf]
+== Robust Random Cut Forest (RRCF)
+
+RRCF explore (on-demand) view:
+
+[,python]
+----
+# Example: 
+# global history of 4h (240 minutes) -> closest power of 2 -> 256 => tree_size param
+# local history of 10m (10 minutes) -> 10 => shingle
+# num_trees: 1st argument is defaulted to 10
+#
+# query: 
+rrcf(inner_query, 10, 256, 10) 
+
+# upper bound: use value_type="upper_bounds" from query response series
+# scores: use value_type="scores" from query response series
+----
+
+RRCF Alert eval view:
+[,python]
+----
+# Example: 
+# use the metric name created when alert was added (kfuse_metric_rrcf_my_metric_name)
+# upper bound: 
+kfuse_metric_rrcf_my_metric_name{value_type="upper_bounds"}
+# scores: 
+kfuse_metric_rrcf_my_metric_name{value_type="scores"}
+# is anomaly (is the alert expression):
+kfuse_metric_rrcf_my_metric_name{value_type="anomalies"}
+----

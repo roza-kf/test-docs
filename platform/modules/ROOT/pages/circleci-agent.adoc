@@ -1,0 +1,23 @@
+= CircleCI Integration
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+To capture traces through CircleCI agent integration, follow these steps:
+
+. Navigate to the *Project Settings* page of your CircleCI project.
+. In the left navigation menu, select the *Webhooks* entry.
+. Click *Add Webhook*.
++
+.. Specify the name in the *Webhook Name*.
+.. Specify the *Receiver URL*:
++
+----
+https://<external-facing endpoint of Kfuse cluster>/ingester/circleci/traces 
+----
+.. Deselect *Certificate Validation*.
+.. In *Events*, select both *Workflow Completed* and *Job Completed*.

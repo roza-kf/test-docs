@@ -1,0 +1,4 @@
+Low cardinality::
+This conditions describes situations of low counts of unique values in the dataset, compared to the total number of entries.
++
+For example, a _Gender_ column in a typical `employee` table naturally has low cardinality; it may have a large number of entries, yet a low number of options: _female_, _male_, _non-binary_, and _declined to answer_.

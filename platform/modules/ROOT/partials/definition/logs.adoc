@@ -1,0 +1,4 @@
+Logs::
+Logs record all activities that occur within your system; they are a history of the system’s behavior during a specific time interval. Logs are essential for successful debugging. When we parse log data, we can develop an insight into application performance that we cannot determine through APIs or application databases. 
++
+Logs can use various formats, such as plain text or JSON objects, accessed through a range of querying techniques, making them the most useful inputs when monitoring application performance, investigating security threats, and addressing performance issues.

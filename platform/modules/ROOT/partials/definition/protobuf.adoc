@@ -1,0 +1,2 @@
+Protobuf::
+Shortened form of Protocol Buffers, protobuf is an efficient, language-agnostic data serialization mechanism for defining  structured data in a . proto file. You can use it to generate source code that writes and reads data from different data streams.

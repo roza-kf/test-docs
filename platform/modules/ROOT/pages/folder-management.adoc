@@ -1,0 +1,245 @@
+= Manage Folders
+:description: In Kloudfuse, Folder Management controls access to Dashboards and Alerts.
+:sectanchors: 
+:url-repo:  
+:page-tags: RBAC, Role-Based Access Control, permissions, folders, security, data access, Admin tab
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[TIP]
+====
+image::2.7.3.svg[Inline]
+This feature is only available in Release 2.7.3, and subsequent versions of Kloudfuse.
+====
+
+In Kloudfuse, Folder Management controls access to Dashboards and Alerts.
+
+You can:
+- Create a Folder
+- Update Folder Name
+- Change Folder Permissions
+- Add Folder Permissions
+- Delete Folder Permissions
+- Delete a Folder
+- Limit Editor Access
+
+[id=folder-create]
+# Create a Folder
+
+Click the Add New Folder button.
+
+Open image-20240828-182333.png
+image-20240828-182333.png
+Add new folder.
+ 
+
+The Create Folder interface appears.
+
+In the Create Folder interface, enter the Folder name, and click Create New Folder.
+Here, we create a folder named MyFirstFolder.
+
+Open image-20240828-182514.png
+image-20240828-182514.png
+Name and create a new folder
+Kloudfuse notifies you that you successfully added a new folder.
+
+ The new folder now appears in the Folder Management interface.
+
+Open image-20240828-182935.png
+image-20240828-182935.png
+New folder appears in the Folder Management interface
+
+[id=folder-name-update]
+# Update Folder Name
+
+Hover your pointer over the Folder Name that you plan to change.
+
+When the Edit (pencil) icon appears, click on it.
+
+Open image-20240823-231329.png
+image-20240823-231329.png
+Edit folder
+The Update Folder interface appears.
+
+In the Folder Name field, change the name.
+Here, we update the name of the folder to forecast.
+
+
+Open image-20240823-232014.png
+image-20240823-232014.png
+Change Folder Name
+Click Update Folder. 
+
+[id=folder-permissions-change]
+# Change Folder Permissions
+
+[id=permission-hierarchy]
+[NOTE]
+====
+.Hierarchy of permissions
+
+Kloudfuse applies the highest permission a user has to access a resource. To prevent a user from accessing a folder or dashboard, consider their role in the organization, folder permissions, and dashboard permissions.
+
+* You cannot override organization administrator permissions; they can access all resources.
+
+* User’s permissions on a folder apply to all dashboards and subfolders.
+
+* An explicitly set lower permission level is ineffective if a more permissive rule applies higher in folder/dashboard hierarchy.
+====
+
+. Hover your pointer over the Folder Name field of the folder you plan to change
+
+. When the Permission Settings (gear) icon appears, click it.
+Here, we change the permissions for folder forecast.
+
+Open image-20240823-213033.png
+image-20240823-213033.png
+
+. Change Permission Settings
++
+The Folder Settings of forecast interface appears.
++
+Folder settings include assignments by Role (these correspond to Grafana roles), by individual User (if present), and by Group (if present). 
+
+Open image-20240823-213513.png
+image-20240823-213513.png
+Folder Settings
+For example, to give users with Viewer role permissions to change the folder contents, set that permission to Editor.
+
+.. To add more permissions to the same folder, see Add Folder Permissions.
+.. To delete permissions, see Delete Folder Permissions.
+
+When you complete adding or changing folder permissions, close the Folder Settings interface.
+
+# Add Folder Permissions
+
+To add additional permissions to the folder, click the Add Permission to Folder button in the Folder Settings interface. 
+
+Open image-20240823-215044.png
+image-20240823-215044.png
+ 
+
+The interface shows options for defining the new permission where you can specify the level of the permission (at User, Group, or Role level), search, and choose the permission level (Admin, Edit, View).
+
+Open image-20240823-215254.png
+image-20240823-215254.png
+Defining a new permission 
+ 
+Here, we grant Edit permissions to the favorite_people group.
+
+Open image-20240823-215837.png
+image-20240823-215837.png
+Adding a new group permission
+ 
+Click Save.
+
+Kloudfuse notifies you that you successfully added the group (or user, or role) to the folder.
+
+The Folder Settings interface displays the entity that has new permissions to the folder.
++
+Here, because favorite_people is the first group with permissions to the folder, the interface has a new Groups section.
+
+
+Open image-20240823-220642.png
+image-20240823-220642.png
+New Group permission added to the folder.
+When you complete adding or changing folder permissions, close the Folder Settings interface.
+
+# Delete Folder Permissions
+
+The Role for Admins is fixed, and you cannot delete it.
+Hover your pointer at the right-hand of the line, and click the Lock icon. Note that nothing happens.
+
+Open image-20240823-214305.png
+image-20240823-214305.png
+Cannot delete Admin role
+ 
+
+You can remove the other two roles, Editor and Viewer.
+Hover your pointer at the right-hand side of the line, and click the Delete (cross) icon.
+In both cases, Kloudfuse notifies you that it successfully removed these roles.
+
+
+Open image-20240823-214549.png
+image-20240823-214549.png
+Can delete Editor role
+ 
+
+Open image-20240823-221348.png
+image-20240823-221348.png
+Can delete Viewer role
+ 
+
+Similarly, you can remove the folder permissions for both Users and Groups.
+
+When you finish deleting folder permissions, close the Folder Settings interface.
+
+# Delete a Folder
+
+The Folder Management interface provides an option for deleting a folder.
+
+Kloudfuse does not allow users to delete Folders that contain Alerts.
+However, you can delete Folders with Dashboards, or empty Folders.
+
+To delete a folder, follow these steps:
+
+. Hover your pointer over name of the folder.
+
+. When the Delete (trashcan) icon appears, click it.
+
++
+Open image-20240823-223802.png
+image-20240823-223802.png
+Delete a Folder
+ 
+. Kloudfuse prompts you to confirm deleting a folder.
++
+You can click Delete to confirm, or Cancel to stop deleting the folder.
+
+
+Open image-20240823-225921.png
+image-20240823-225921.png
+Confirm deleting a folder
+. You should see a notification that Kloudfuse deleted the folder successfully.
+
+The Folder Management interface no longer lists My1stFolder.
+
+# Limit Editor Access
+
+It is possible for a user with an Editor role to create dashboards and alerts that only they and users with Admin role can change. All other users with Edit role can only view these dashboards and alerts.
+
+To accomplish this, follow these steps:
+
+Create a new folder.
+Here, we create the folder Limited Access. 
+See Create Folder.
+
+Open image-20240828-182039.png
+image-20240828-182039.png
+Create a new folder, named “Limited Access”
+Kloudfuse adds the new folder to the Folder Management interface.
+
+Hover your pointer over the name field of the Limited Access folder, and click the Configuration (gear) icon.
+
+In the Change Settings for Limited Access interface, change the Editor role permissions on the folder to Viewer.
+
+
+Open image-20240829-162432.png
+image-20240829-162432.png
+Change Editor permission to Viewer
+ 
+
+Create new dashboards and alerts in your folder.
+If you move existing dashboards and alerts into the new folder, they keep their own access permissions, and may still be edited by other users with Editor role.
+
+Have another user with Editor role sign into the system, and attempt to open the configuration of the folder. 
+They should see an error.
+
+
+Open image-20240829-165916.png
+image-20240829-165916.png
+Error because user should not be able to access configuration for the folder
+ 
+
+Similarly, when they review Dashboards and Alerts in the Limited Access folder, they cannot edit or delete them.

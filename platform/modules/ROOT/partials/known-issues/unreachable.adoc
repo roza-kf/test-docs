@@ -1,0 +1,13 @@
+// id=unreachable
+External IP, host, or DNS is unable to access Kfuse:
+
+[,console]
+----
+curl http://EXTERNAL_IP 
+curl: (28) Failed to connect to XX.XX.XX.XX port 80 after 129551 ms: Connection timed out
+curl https://EXTERNAL_IP --insecure
+curl: (28) Failed to connect to XX.XX.XX.XX port 443 after 129551 ms: Connection timed out
+----
+
+Resolution::
+Ensure that the security group or firewall policy for the Kubernetes cluster, node, and VPC endpoint allows external incoming traffic.

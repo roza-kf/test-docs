@@ -1,0 +1,14 @@
+= Monitor
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+image:monitor.svg[]
+
+* Monitor infrastructure
+* Monitor SPU usage
+* Kloudfuse plane

@@ -1,0 +1,34 @@
+= Collection of self-managed PostgreSQL metrics
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+These settings are for the self-managed postgres deployments. 
+
+For the collector to scrape data from postgres, it requires a few things. Before continuing, complete the instructions in the Datadog documentation section on https://docs.datadoghq.com/database_monitoring/setup_postgres/selfhosted/?tab=postgres15[Setting Up Database Monitoring for self hosted Postgres^].
+
+. The PostgreSQL instance must be annotated:
++
+[,yaml]
+----
+postgresql:
+  primary:
+    podAnnotations:
+      ad.datadoghq.com/postgresql.check_names: '["postgres"]'
+      ad.datadoghq.com/postgresql.init_configs: '[{}]'
+      ad.datadoghq.com/postgresql.instances: '[{"host": "%%host%%", "port":5432, "username": "<user-you-created>", "password" : "<password-you-chose>", "tags" : []}]'
+  readReplicas:
+    podAnnotations:
+      ad.datadoghq.com/postgresql.check_names: '["postgres"]'
+      ad.datadoghq.com/postgresql.init_configs: '[{}]'
+      ad.datadoghq.com/postgresql.instances: '[{"host": "%%host%%", "port":5432, "username": "<user-you-created>", "password" : "<password-you-chose>", "tags" : []}]'
+----
+. After making the changes, restart PostgreSQL.
+
+
+
+

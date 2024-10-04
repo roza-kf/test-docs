@@ -1,0 +1,12 @@
+= Advanced functions service
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+// https://kloudfuse.atlassian.net/wiki/spaces/EN/pages/712671260/Advanced+functions+service
+
+

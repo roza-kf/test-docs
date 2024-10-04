@@ -1,0 +1,15 @@
+= Setup
+:description: 
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+
+image:setup.svg[]
+
+* xref:installation.adoc[Installation]
+* xref:upgrade.adoc[Upgrade]
+* xref:migration.adoc[Migration]

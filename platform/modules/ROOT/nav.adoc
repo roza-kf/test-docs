@@ -1,0 +1,230 @@
+* xref:overview.adoc[]
+** xref:platform.adoc[]
+
+.image:release.svg["Release notes, known issues, and so on",30,inline] What's New
+* xref:release-part.adoc[]
+** xref:release-notes.adoc[]
+** xref:known-issues.adoc[]
+** xref:deprecations.adoc[]
+** xref:support.adoc[]
+
+.image:setup.svg[Telemetry,30,inline] SETUP
+* xref:setup-part.adoc[]
+** xref:installation.adoc[]
+*** xref:install.adoc[]
+*** xref:install-ingress.adoc[]
+*** xref:install-password.adoc[]
+*** xref:install-add-users.adoc[]
+*** xref:install-ui.adoc[]
+*** xref:uninstall.adoc[]
+** xref:upgrade.adoc[]
+*** xref:upgrade-validation.adoc[]
+** xref:migration[]
+*** xref:datadog-agent.adoc[]
+**** xref:datadog-agent-logs.adoc[]
+**** xref:datadog-agent-metrics.adoc[]
+**** xref:datadog-agent-traces.adoc[]
+*** xref:ec2-agents.adoc[]
+*** xref:prometheus-agent.adoc[]
+*** xref:kfuse-knight-agent.adoc[]
+*** xref:aws-cloudwatch-agent.adoc[]
+*** xref:aws-events-agent.adoc[]
+*** xref:gcp-metrics-agent.adoc[]
+*** xref:gcp-pub-sub-logs.adoc[]
+*** xref:github-events.adoc[]
+*** xref:filebeat-agent.adoc[]
+*** xref:fluent-bit-agent.adoc[]
+**** xref:fluent-bit-agent-kloudfuse.adoc[]
+*** xref:fluentd-agent.adoc[]
+*** xref:otel-agent.adoc[]
+**** xref:otel-agent-traces.adoc[]
+*** xref:elastic-agent-traces.adoc[]
+*** xref:circleci-agent.adoc[]
+*** xref:postgresql-agent.adoc[]
+**** xref:postgresql-agent-self.adoc[]
+*** xref:analytics-advanced-monitoring-configure.adoc[]
+*** xref:docker-workloads.adoc[]
+**** xref:datadog-agent-docker.adoc[]
+**** xref:otel-agent-docker.adoc[]
+*** xref:otel.adoc[]
+**** xref:otel-migrate.adoc[]
+**** xref:otel-kubernetes.adoc[]
+**** xref:otel-runtime-metrics.adoc[]
+**** xref:otel-containers.adoc[]
+**** xref:otel-host.adoc[]
+
+.image:telemetry.svg[Telemetry,30,inline] TELEMETRY
+ 
+* xref:telemetry-part.adoc[]
+** xref:metrics.adoc[]
+** xref:events.adoc[]
+** xref:logs.adoc[]
+** xref:traces.adoc[]
+
+.image:artifacts.svg[Artifacts,30,inline] ARTIFACTS
+* xref:artifacts-part.adoc[]
+** xref:dashboards.adoc[]
+*** xref:dashboards-list.adoc[]
+*** xref:dashboards-create.adoc[]
+**** xref:dashboards-panel.adoc[]
+**** xref:dashboards-timeseries.adoc[]
+**** xref:dashboards-top-list.adoc[]
+**** xref:dashboards-table.adoc[]
+**** xref:dashboards-pie-chart.adoc[]
+**** xref:dashboards-host-map.adoc[]
+**** xref:dashboards-log-events.adoc[]
+**** xref:dashboards-text.adoc[]
+**** xref:dashboards-row.adoc[]
+*** xref:dashboards-actions.adoc[]
+**** xref:dashboards-import-json.adoc[]
+**** xref:dashboards-export-json.adoc[]
+**** xref:dashboards-copy-json.adoc[]
+**** xref:dashboards-delete.adoc[]
+** xref:alerts.adoc[]
+*** xref:alerts-configure.adoc[]
+**** xref:importing-dashboards-alerts.adoc[]
+**** xref:grafana-alerts.adoc[]
+**** xref:platform-alerts.adoc[]
+**** xref:preinstalled-alerts.adoc[]
+*** xref:alerts-create.adoc[]
+*** xref:alerts-rules.adoc[]
+*** xref:alerts-contact-points.adoc[]
+*** xref:alerts-silence.adoc[]
+
+.image:monitor.svg[Monitor,30,inline] MONITOR
+* xref:monitor-part.adoc[]
+** xref:infrastructure.adoc[]
+** xref:control-plane.adoc[]
+** xref:cpu-usage.adoc[]
+
+.image:advanced.svg[advanced,30,inline]ADVANCED TOPICS
+* xref:advanced-part.adoc[]
+** xref:metrics-roll-up.adoc[]
+** xref:archive-hydration.adoc[]
+** xref:rum.adoc[]
+*** xref:rum-list.adoc[]
+*** xref:rum-analytics.adoc[]
+*** xref:rum-performance-monitoring.adoc[]
+*** xref:rum-views.adoc[]
+*** xref:rum-actions.adoc[]
+*** xref:rum-long-tasks.adoc[]
+*** xref:rum-resources.adoc[]
+** xref:rbac.adoc[RBAC]
+*** xref:rbac-configuration.adoc[]
+*** xref:admin-tab.adoc[]
+**** xref:user-management.adoc[]
+**** xref:folder-management.adoc[]
+**** xref:group-management.adoc[]
+**** xref:policy-management.adoc[]
+**** xref:policy-configuration-management.adoc[]
+
+.image:use-cases.svg[Use Cases,30,inline]USE CASES
+* xref:use-cases.adoc[Use Cases]
+
+// https://www.acceldata.io/article/top-ten-use-cases-for-data-observability
+////
+** xref:uc-prepare.adoc[Prepare]
+*** xref:uc-data-infrastructure-design.adoc[Data Infrastructure Design]
+*** xref:uc-capacity-planning.adoc[Capacity Planning]
+*** xref:uc-pipeline-design.adoc[Pipeline Design]
+** xref:uc-operate.adoc[Operate]
+*** xref:uc-performance-tunning.adoc[Performance Tunning]
+*** xref:uc-data-quality.adoc[Data Quality]
+*** xref:uc-data-drift.adoc[Data Drift]
+** xref:uc-adjust.adoc[Adjust]
+*** xref:uc-resource-optimization.adoc[Resource Optimization]
+*** xref:uc-storage-tiering.adoc[Storage Tiering]
+*** xref:uc-migrations.adoc[Migrations]
+** xref:uc-fund.adoc[Fund]
+*** xref:uc-fin-ops.adoc[Financial Operations]
+
+// https://www.montecarlodata.com/blog-data-observability-use-cases/
+Core Data Observability Use Cases
+1. Reduce The Amount Of Data Incidents
+2. Detect Data Incidents Faster
+3. Fix Data Incidents Faster
+4. Prevent, Detect, Resolve Schema Changes
+5. Prevent, Detect, Resolve Data Freshness Issues
+6. Prevent, Detect, Resolve Data Volume Issues
+7. Prevent, Detect, Resolve Data Distribution Issues
+Mitigate Risk of System Failures
+8. Safety Net For When Alerts Fail
+9. Flag System Authorization And Integration Failures
+Mitigate Risk of Code Failures
+10. Query Change Detection
+11. Query Simplification
+12. Extra Attention For Big Jobs
+13. Upstream Code Impacting Data Systems 
+14. Human Error 
+Mitigate Risk of Data Failures
+15. Keep Third Parties Honest
+16. Validate Data
+17. Profile Data
+Save Time
+18. Save Data Engineer’s Time
+19. Scale Small Teams
+20. Save Data Analyst And Data Scientist’s Time
+21. Save Analytical Engineer’s Time
+Increase revenue
+22. Improve Marketing Campaigns
+23. Enable A Robust Experimentation Infrastructure
+24. Differentiate Data Products
+25. Keep Customers Happy
+26. Keep Critical Machine Learning Algorithms Online
+27. Move Your Generative AI Strategy From Pitch Deck To Reality
+28. Support Reverse ETL Initiatives Like Personalization
+29. Go Deep On Key Business Metrics
+Avoid Costs
+30. Prevent Charges Related To Overconsumption
+31. Avoid Compliance And Regulatory Fines
+32. Stop Revenue Bleeding
+System Modernization and Optimization
+33. Data Warehouse (Or Lakehouse) Migration
+34. Integrate Data Stacks Post Merger
+35. Reduce Clutter (tables, dashboards, etc)
+36. Know When To Fix Vs. Refactor Data Pipelines
+Improve DataOps Processes
+37. Conduct Pre-Mortems
+38. Analyze Data Incident Impact and Triage
+39. Transition To A Data Mesh (Or Other Data Team Structure)
+40. Prioritize Data Assets And Efforts 
+41. Improve Incident Documentation 
+42. Combat Alert Fatigue
+Improve Visibility And Transparency
+43. Increase Visibility Into Data Incident Management Workflows
+44. Increase Visibility Into Other Domains And Decentralize Data Quality
+45. Illustrate The Data Health “Big Picture”
+Create Accountability
+46. Set Data SLAs
+47. Publish The Uptime of Your Data Products
+48. Create Clear Lines of Ownership
+Build Data Trust With The Business
+49. Be First To Know
+50. Proactively Flag Application Bugs
+51. Keep Up With Hypergrowth
+52. Justify And Expand Data Investments
+53. Improve CRM Quality
+Improve MLOps
+54. Trigger ML Model Retraining 
+55. Monitor For ML Model Feature Anomalies
+56. Solve The Garbage In, Garbage Out Problem
+Accelerate Self-Service Analytics And Data Democratization
+57. Enable Self-Service Analytics
+58. Execute A Smooth Data Catalog Roll Out
+Go deeper and broader with your data quality coverage
+59. Catch The Needle In The Haystack
+60. Catch Unknown Unknowns
+////
+ 
+.image:references.svg[References,30,inline] REFERENCES
+* xref:references-part.adoc[References]
+** xref:kfuseql.adoc[KfuseQL reference]
+** xref:log-search-syntax.adoc[Log search syntax]
+** xref:advanced-functions.adoc[Advanced functions]
+
+.image:appendicies.svg[Appendicies,30,inline].APPENDIX
+* xref:appendix-part.adoc[Appendicies]
+** xref:glossary.adoc[Glossary]
+** xref:agents-list.adoc[Agents]
+** xref:services-list.adoc[Services]
+

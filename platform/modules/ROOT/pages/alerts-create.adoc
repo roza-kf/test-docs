@@ -1,0 +1,34 @@
+= Create alerts
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+[id=alert-types]
+# Alert types
+Kloudfuse supports these specific alerting types:
+
+Metric alerts:: Metric monitors analyze continuous streams of data. When collecting metrics through Kloudfuse or APIs, you can configure alerts triggered when a metric crosses a threshold over a specified period of time.
+
+Anomaly alerts:: Anomaly monitors detect when a metric behaves differently than it has in the past, taking into account trends, seasonal variation, day-of-week patterns, and time-of-day patterns.
+
+Change alerts::
+For each alert evaluation, Kloudfuse calculates the raw difference between the series right now and N minutes ago, then computes the average, minimum, maximum, or sum aggregation over the selected period. It triggers an alert when the computed series crosses the specified threshold.
+
+Forecast alerts::
+Forecast monitors predict how a metric may behave in the future. By triggering an alert before reaching a threshold, Kloudfuse provides you with enough time to proactively address the underlying issues.
+
+Outlier alerts::
+For each alert evaluation, Kloudfuse checks if all groups are clustered together and exhibit similar behavior. It triggers an alert whenever at least one group displ
+
+Threshold alerts::
+For each alert evaluation, Kloudfuse computes the average, minimum, maximum, or sum aggregation over the selected period, and checks if it is over or under the threshold. This is the standard alert case, when you know what values to expect.
+
+Log alerts::
+Log monitors trigger an alert when a specified log type exceeds a user-defined threshold over a given period of time. Common use cases for log monitoring include code exception errors and build job notifications.
+
+APM alerts::
+Kloudfuse specifically designed APM monitors by extending Metric monitors to complement the features of APM metrics. They enable you to set alerts for metrics at the service level: the number of hits, errors, and various latency indicators.

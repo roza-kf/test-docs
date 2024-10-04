@@ -1,0 +1,2 @@
+Span::
+A span is a single operation within a trace. It is an integral part of a distributed system, the basic element in distributed tracing.

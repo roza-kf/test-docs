@@ -1,0 +1,30 @@
+= Artifacts
+:description:
+:sectanchors: 
+:url-repo:  
+:page-tags: 
+:figure-caption!:
+:table-caption!:
+:example-caption!:
+
+image:artifacts.svg[]
+
+
+
+This page provides information about Dashboards and Alerts for users who are migrating from other monitoring platforms (such as Prometheus, Thanos, Mimir, Grafana, DataDog, NewRelic, Wavefront, Dynatrace, etc.) to the Kloudfuse platform. If you are such a user, then congratulations on making the right move, and read on. Otherwise, this page isn’t relevant to you.
+
+Your dashboards and alerts are important artifacts that define how you visualize and get notified about issues in your infrastructure or applications. If you have such artifacts, then they must be under one of the following three categories:
+
+. A Prometheus-compliant system that uses Grafana dashboards & alerts
++ 
+Follow the instructions to migrate your artifacts from a Prometheus-compliant system to the Kloudfuse platform. 
+
+. A vendor-specific (DataDog, Wavefront, NewRelic, Dynatrace, etc.) dashboards and alerts.
++
+Follow the instructions to convert and import your artifacts from a vendor-specific environment to the Kloudfuse platform.
+
+. A set of custom artifacts.
++
+Follow the instructions to import custom artifacts to the Kloudfuse platform
+In either case, Kloudfuse got you covered. 
+

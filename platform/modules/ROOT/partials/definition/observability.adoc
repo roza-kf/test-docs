@@ -1,0 +1,6 @@
+Observability::
+An observability platform aggregates and visualizes telemetric data collected from application and infrastructure components in a distributed environment. It monitors and analyzes application behavior, transactional data, and the various types of infrastructure that support application delivery, making it possible to proactively address issues before they become serious concerns. 
++
+Beyond monitoring capabilities, observability provides deeper insights into the data and optimizes performance, ensurse availability, and improves customer experience. 
++
+At its best, observability enables users to ask arbitrary questions about their environment, without knowing in advance what you may want to know.
